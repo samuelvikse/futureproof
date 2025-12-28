@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found — FutureProof</title>
+  <meta name="description" content="The page you're looking for doesn't exist.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="apple-touch-icon" href="/assets/favicon.svg">
+  
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#53654e">
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://futureproof.studio/404">
+  <meta property="og:title" content="Page Not Found — FutureProof">
+  <meta property="og:description" content="The page you're looking for doesn't exist.">
+  <meta property="og:image" content="https://futureproof.studio/assets/images/og-image.jpg">
+
+  <!-- Adobe Fonts: Sofia Pro -->
+  <link rel="stylesheet" href="https://use.typekit.net/ngj4ynz.css">
+
+  <!-- Web Manifest -->
+  <link rel="manifest" href="/manifest.json">
+
+  <!-- Your CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <style>
+    .error-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 140px 20px;
+      background: linear-gradient(135deg, var(--color-secondary), var(--color-dark));
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .error-page::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 70% 30%, rgba(244, 232, 216, 0.03) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    
+    .error-content {
+      max-width: 600px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .error-code {
+      font-size: 10rem;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -8px;
+      color: rgba(244, 232, 216, 0.1);
+      margin-bottom: -30px;
+    }
+    
+    .error-content h1 {
+      font-size: 2.8rem;
+      letter-spacing: -1.5px;
+      margin-bottom: 16px;
+    }
+    
+    .error-content h1 em {
+      font-style: italic;
+      color: rgba(244, 232, 216, 0.7);
+    }
+    
+    .error-content p {
+      font-size: 1.15rem;
+      color: rgba(244, 232, 216, 0.7);
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+    
+    .error-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .error-btn {
+      display: inline-block;
+      padding: 16px 36px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border-radius: 50px;
+      transition: all 0.3s;
+    }
+    
+    .error-btn-primary {
+      background: var(--color-primary);
+      color: var(--color-secondary);
+    }
+    
+    .error-btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    }
+    
+    .error-btn-secondary {
+      background: transparent;
+      color: var(--color-primary);
+      border: 1px solid rgba(244, 232, 216, 0.3);
+    }
+    
+    .error-btn-secondary:hover {
+      background: rgba(244, 232, 216, 0.1);
+      border-color: rgba(244, 232, 216, 0.5);
+    }
+    
+    @media (max-width: 768px) {
+      .error-code {
+        font-size: 6rem;
+        margin-bottom: -15px;
+      }
+      
+      .error-content h1 {
+        font-size: 2rem;
+      }
+      
+      .error-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .error-btn {
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Skip to content -->
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Preloader -->
+  <div class="preloader">
+    <div class="preloader-content">
+      <img src="assets/logo.svg" alt="" class="preloader-logo">
+      <div class="preloader-bar"><div class="preloader-progress"></div></div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <nav class="main-nav">
+      <a href="/" class="logo">
+        <img src="assets/logo.svg" alt="FutureProof logo" class="logo-img">
+      </a>
+
+      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+      </button>
+
+      <ul class="nav-links">
+        <li><a href="/work.html" data-text="Work"><span>Work</span></a></li>
+        <li><a href="/services.html" data-text="Services"><span>Services</span></a></li>
+        <li><a href="/about.html" data-text="About"><span>About</span></a></li>
+        <li><a href="/contact.html" data-text="Contact"><span>Contact</span></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="page-transition">
+    <section class="error-page">
+      <div class="error-content">
+        <div class="error-code">404</div>
+        <h1>Page not <em>found</em></h1>
+        <p>The page you're looking for seems to have wandered off. It might have been moved, deleted, or perhaps it never existed in the first place.</p>
+        <div class="error-buttons">
+          <a href="/" class="error-btn error-btn-primary">Go Home</a>
+          <a href="/contact.html" class="error-btn error-btn-secondary">Contact Us</a>
+        </div>
+        
+        <!-- Helpful Links -->
+        <div style="margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(244, 232, 216, 0.15);">
+          <p style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: rgba(244, 232, 216, 0.5); margin-bottom: 24px;">Popular pages</p>
+          <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+            <a href="/work.html" style="color: rgba(244, 232, 216, 0.8); text-decoration: none; padding: 8px 16px; border: 1px solid rgba(244, 232, 216, 0.2); border-radius: 20px; font-size: 0.9rem; transition: all 0.3s;">Our Work</a>
+            <a href="/services.html" style="color: rgba(244, 232, 216, 0.8); text-decoration: none; padding: 8px 16px; border: 1px solid rgba(244, 232, 216, 0.2); border-radius: 20px; font-size: 0.9rem; transition: all 0.3s;">Services</a>
+            <a href="/about.html" style="color: rgba(244, 232, 216, 0.8); text-decoration: none; padding: 8px 16px; border: 1px solid rgba(244, 232, 216, 0.2); border-radius: 20px; font-size: 0.9rem; transition: all 0.3s;">About Us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <img src="assets/logo.svg" alt="FutureProof" class="footer-logo">
+        <p>Building brands that outlast the trends. Strategy, identity, and digital experiences.</p>
+      </div>
+      <div class="footer-nav">
+        <div class="footer-column">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/work.html">Work</a></li>
+            <li><a href="/services.html">Services</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="/privacy.html">Privacy Policy</a></li>
+            <li><a href="/terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="https://instagram.com/tryfutureproof" target="_blank">Instagram</a></li>
+            <li><a href="https://tiktok.com/@futureproofstudio" target="_blank">TikTok</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:post@svbruvik.no">post@svbruvik.no</a></li>
+            <li><span>Netherlands</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 FutureProof. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Cookie Consent Banner -->
+  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Cookie consent">
+    <div class="cookie-content">
+      <div class="cookie-text">
+        <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies. <a href="/privacy.html">Learn more</a></p>
+      </div>
+      <div class="cookie-buttons">
+        <button class="cookie-btn cookie-btn-decline" id="cookieDecline">Decline</button>
+        <button class="cookie-btn cookie-btn-accept" id="cookieAccept">Accept</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Cookie Consent
+    const cookieBanner = document.getElementById('cookieBanner');
+    const cookieAccept = document.getElementById('cookieAccept');
+    const cookieDecline = document.getElementById('cookieDecline');
+    
+    if (!localStorage.getItem('cookieConsent')) {
+      setTimeout(() => cookieBanner?.classList.add('visible'), 1500);
+    } else {
+      cookieBanner?.classList.add('hidden');
+    }
+    
+    cookieAccept?.addEventListener('click', () => {
+      localStorage.setItem('cookieConsent', 'accepted');
+      cookieBanner?.classList.remove('visible');
+      setTimeout(() => cookieBanner?.classList.add('hidden'), 400);
+    });
+    
+    cookieDecline?.addEventListener('click', () => {
+      localStorage.setItem('cookieConsent', 'declined');
+      cookieBanner?.classList.remove('visible');
+      setTimeout(() => cookieBanner?.classList.add('hidden'), 400);
+    });
+
+    // Scroll to top on page load
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+
+    // Preloader
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.querySelector('.preloader')?.classList.add('loaded');
+      }, 800);
+    });
+
+    // Header scroll effect
+    const nav = document.querySelector('.main-nav');
+    window.addEventListener('scroll', () => {
+      nav?.classList.toggle('scrolled', window.scrollY > 50);
+    }, { passive: true });
+
+    // Mobile Menu
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    menuToggle?.addEventListener('click', () => {
+      const isOpen = menuToggle.classList.toggle('active');
+      navLinks?.classList.toggle('active');
+      menuToggle.setAttribute('aria-expanded', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+    
+    navLinks?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      menuToggle?.classList.remove('active');
+      navLinks?.classList.remove('active');
+      document.body.style.overflow = '';
+    }));
+  </script>
+</body>
+</html>

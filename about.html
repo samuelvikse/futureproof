@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — FutureProof</title>
+  <meta name="description" content="Meet the team and philosophy behind FutureProof. We're a branding and digital studio building brands that stand the test of time.">
+  
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://use.typekit.net" crossorigin>
+  <link rel="preconnect" href="https://p.typekit.net" crossorigin>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+  
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#53654e">
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://futureproof.studio/about">
+  <meta property="og:title" content="About — FutureProof">
+  <meta property="og:description" content="Meet the team and philosophy behind FutureProof. We're a branding and digital studio building brands that stand the test of time.">
+  <meta property="og:image" content="https://futureproof.studio/assets/images/og-image.jpg">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="About — FutureProof">
+  <meta name="twitter:description" content="Meet the team and philosophy behind FutureProof. We're a branding and digital studio building brands that stand the test of time.">
+  <meta name="twitter:image" content="https://futureproof.studio/assets/images/og-image.jpg">
+
+  <!-- Adobe Fonts: Sofia Pro -->
+  <link rel="stylesheet" href="https://use.typekit.net/ngj4ynz.css">
+
+  <!-- Web Manifest -->
+  <link rel="manifest" href="/manifest.json">
+
+  <!-- Your CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <style>
+    /* About Page Specific Styles */
+    .about-hero {
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 140px 20px 100px;
+      background: linear-gradient(135deg, var(--color-secondary), var(--color-dark));
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .about-hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 70% 30%, rgba(244, 232, 216, 0.03) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    
+    .about-hero-content {
+      max-width: 700px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .about-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      padding: 10px 20px;
+      border: 1px solid rgba(244, 232, 216, 0.3);
+      border-radius: 30px;
+      margin-bottom: 30px;
+    }
+    
+    .about-hero h1 {
+      font-size: 3.5rem;
+      letter-spacing: -2px;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+    
+    .about-hero h1 em {
+      font-style: italic;
+      color: rgba(244, 232, 216, 0.7);
+    }
+    
+    .about-hero p {
+      font-size: 1.2rem;
+      color: rgba(244, 232, 216, 0.75);
+      line-height: 1.8;
+    }
+    
+    /* Story Section */
+    .story-section {
+      padding: 120px 20px;
+      background: var(--color-primary);
+    }
+    
+    .story-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .story-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    
+    .story-header h2 {
+      font-size: 2.5rem;
+      color: var(--color-secondary);
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+    
+    .story-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+    }
+    
+    .story-content p {
+      font-size: 1.1rem;
+      color: rgba(83, 101, 78, 0.75);
+      line-height: 1.9;
+      margin-bottom: 24px;
+    }
+    
+    .story-content p:last-child {
+      margin-bottom: 0;
+    }
+    
+    .story-highlight {
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--color-secondary);
+      line-height: 1.6;
+      border-left: 3px solid var(--color-secondary);
+      padding-left: 24px;
+      margin: 40px 0;
+    }
+    
+    /* Manifesto Section */
+    .manifesto-section {
+      padding: 120px 20px;
+      background: #fff;
+    }
+    
+    .manifesto-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .manifesto-intro {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+    
+    .manifesto-intro h2 {
+      font-size: 2.5rem;
+      color: var(--color-secondary);
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+    }
+    
+    .manifesto-intro p {
+      font-size: 1.15rem;
+      color: rgba(83, 101, 78, 0.7);
+      line-height: 1.8;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .manifesto-item {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 40px;
+      padding: 50px 0;
+      border-bottom: 1px solid rgba(83, 101, 78, 0.1);
+    }
+    
+    .manifesto-item:last-child {
+      border-bottom: none;
+    }
+    
+    .manifesto-number {
+      font-size: 3.5rem;
+      font-weight: 300;
+      color: rgba(83, 101, 78, 0.15);
+      line-height: 1;
+    }
+    
+    .manifesto-text h3 {
+      font-size: 1.6rem;
+      color: var(--color-secondary);
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+    }
+    
+    .manifesto-text p {
+      font-size: 1.05rem;
+      color: rgba(83, 101, 78, 0.7);
+      line-height: 1.8;
+    }
+    
+    /* Values Section */
+    .values-section {
+      padding: 120px 20px;
+      background: linear-gradient(180deg, var(--color-secondary), var(--color-dark));
+    }
+    
+    .values-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 70px;
+    }
+    
+    .values-label {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      padding: 10px 20px;
+      border: 1px solid rgba(244, 232, 216, 0.3);
+      border-radius: 30px;
+      margin-bottom: 24px;
+    }
+    
+    .values-header h2 {
+      font-size: 2.8rem;
+      letter-spacing: -1.5px;
+      margin-bottom: 16px;
+    }
+    
+    .values-header h2 em {
+      font-style: italic;
+      color: rgba(244, 232, 216, 0.7);
+    }
+    
+    .values-header p {
+      font-size: 1.1rem;
+      color: rgba(244, 232, 216, 0.7);
+      line-height: 1.7;
+    }
+    
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    
+    .value-card {
+      padding: 45px 35px;
+      background: rgba(244, 232, 216, 0.05);
+      border: 1px solid rgba(244, 232, 216, 0.1);
+      border-radius: 20px;
+      transition: all 0.4s ease;
+    }
+    
+    .value-card:hover {
+      background: rgba(244, 232, 216, 0.08);
+      transform: translateY(-8px);
+    }
+    
+    .value-icon {
+      width: 56px;
+      height: 56px;
+      background: rgba(244, 232, 216, 0.1);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      transition: all 0.3s ease;
+    }
+    
+    .value-card:hover .value-icon {
+      background: var(--color-primary);
+    }
+    
+    .value-icon svg {
+      width: 26px;
+      height: 26px;
+      stroke: var(--color-primary);
+      stroke-width: 1.5;
+      transition: stroke 0.3s ease;
+    }
+    
+    .value-card:hover .value-icon svg {
+      stroke: var(--color-secondary);
+    }
+    
+    .value-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      letter-spacing: -0.3px;
+    }
+    
+    .value-card p {
+      font-size: 0.95rem;
+      color: rgba(244, 232, 216, 0.65);
+      line-height: 1.7;
+    }
+    
+    /* Team Section */
+    .team-section {
+      padding: 120px 20px;
+      background: var(--color-primary);
+    }
+    
+    .team-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 70px;
+    }
+    
+    .team-label {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--color-secondary);
+      padding: 10px 20px;
+      border: 1px solid rgba(83, 101, 78, 0.3);
+      border-radius: 30px;
+      margin-bottom: 24px;
+    }
+    
+    .team-header h2 {
+      font-size: 2.8rem;
+      letter-spacing: -1.5px;
+      margin-bottom: 16px;
+      color: var(--color-secondary);
+    }
+    
+    .team-header h2 em {
+      font-style: italic;
+      color: rgba(83, 101, 78, 0.5);
+    }
+    
+    .team-header p {
+      font-size: 1.1rem;
+      color: rgba(83, 101, 78, 0.7);
+      line-height: 1.7;
+    }
+    
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .team-card {
+      text-align: center;
+      padding: 50px 30px;
+      background: rgba(83, 101, 78, 0.05);
+      border: 1px solid rgba(83, 101, 78, 0.1);
+      border-radius: 20px;
+      transition: all 0.4s ease;
+    }
+    
+    .team-card:hover {
+      background: rgba(83, 101, 78, 0.08);
+      transform: translateY(-8px);
+    }
+    
+    .team-avatar {
+      width: 100px;
+      height: 100px;
+      background: rgba(83, 101, 78, 0.15);
+      border-radius: 50%;
+      margin: 0 auto 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: 600;
+      color: rgba(83, 101, 78, 0.4);
+    }
+    
+    .team-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 6px;
+      letter-spacing: -0.3px;
+      color: var(--color-secondary);
+    }
+    
+    .team-role {
+      font-size: 0.85rem;
+      color: rgba(83, 101, 78, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 20px;
+    }
+    
+    .team-bio {
+      font-size: 0.95rem;
+      color: rgba(83, 101, 78, 0.65);
+      line-height: 1.7;
+    }
+    
+    /* Quote Section */
+    .quote-section {
+      padding: 140px 20px;
+      background: #fff;
+      text-align: center;
+    }
+    
+    .quote-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .quote-mark {
+      font-size: 6rem;
+      color: rgba(83, 101, 78, 0.1);
+      line-height: 0.5;
+      margin-bottom: 30px;
+    }
+    
+    .quote-text {
+      font-size: 2.2rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--color-secondary);
+      letter-spacing: -0.5px;
+      line-height: 1.4;
+      margin-bottom: 30px;
+    }
+    
+    .quote-author {
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: rgba(83, 101, 78, 0.5);
+    }
+    
+    /* Stats Section */
+    .stats-section {
+      padding: 100px 20px;
+      background: var(--color-primary);
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .stat-item {
+      padding: 30px 20px;
+    }
+    
+    .stat-number {
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--color-secondary);
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    
+    .stat-label {
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: rgba(83, 101, 78, 0.5);
+    }
+    
+    /* CTA Section */
+    .about-cta {
+      padding: 120px 20px;
+      text-align: center;
+      background: linear-gradient(135deg, var(--color-secondary), var(--color-dark));
+    }
+    
+    .about-cta-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .about-cta h2 {
+      font-size: 2.5rem;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+    
+    .about-cta h2 em {
+      font-style: italic;
+      color: rgba(244, 232, 216, 0.7);
+    }
+    
+    .about-cta p {
+      font-size: 1.1rem;
+      color: rgba(244, 232, 216, 0.7);
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+    
+    .about-cta .btn-primary {
+      display: inline-block;
+      padding: 18px 48px;
+      background: var(--color-primary);
+      color: var(--color-secondary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      border-radius: 50px;
+      transition: all 0.3s;
+    }
+    
+    .about-cta .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .values-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .about-hero {
+        padding: 120px 20px 80px;
+        min-height: auto;
+      }
+      
+      .about-hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .story-section {
+        padding: 80px 20px;
+      }
+      
+      .story-header h2 {
+        font-size: 2rem;
+      }
+      
+      .story-content {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+      
+      .story-highlight {
+        margin: 30px 0;
+        font-size: 1.2rem;
+      }
+      
+      .manifesto-section {
+        padding: 80px 20px;
+      }
+      
+      .manifesto-intro h2 {
+        font-size: 2rem;
+      }
+      
+      .manifesto-item {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 35px 0;
+      }
+      
+      .manifesto-number {
+        font-size: 2.5rem;
+      }
+      
+      .manifesto-text h3 {
+        font-size: 1.4rem;
+      }
+      
+      .values-section {
+        padding: 80px 20px;
+      }
+      
+      .values-header h2 {
+        font-size: 2rem;
+      }
+      
+      .values-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      
+      .value-card {
+        padding: 35px 28px;
+      }
+      
+      .team-section {
+        padding: 80px 20px;
+      }
+      
+      .team-header h2 {
+        font-size: 2rem;
+      }
+      
+      .team-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .team-card {
+        padding: 40px 24px;
+      }
+      
+      .quote-section {
+        padding: 80px 20px;
+      }
+      
+      .quote-text {
+        font-size: 1.6rem;
+      }
+      
+      .stats-section {
+        padding: 60px 20px;
+      }
+      
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+      
+      .stat-number {
+        font-size: 2.5rem;
+      }
+      
+      .about-cta {
+        padding: 80px 20px;
+      }
+      
+      .about-cta h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Skip to content -->
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Preloader -->
+  <div class="preloader">
+    <div class="preloader-content">
+      <img src="assets/logo.svg" alt="" class="preloader-logo">
+      <div class="preloader-bar"><div class="preloader-progress"></div></div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <nav class="main-nav">
+      <a href="/" class="logo">
+        <img src="assets/logo.svg" alt="FutureProof logo" class="logo-img">
+      </a>
+
+      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+      </button>
+
+      <ul class="nav-links">
+        <li><a href="/work.html" data-text="Work"><span>Work</span></a></li>
+        <li><a href="/services.html" data-text="Services"><span>Services</span></a></li>
+        <li><a href="/about.html" data-text="About" class="active"><span>About</span></a></li>
+        <li><a href="/contact.html" data-text="Contact"><span>Contact</span></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="page-transition">
+    <!-- Hero -->
+    <section class="about-hero">
+      <div class="about-hero-content">
+        <span class="about-badge">About Us</span>
+        <h1>Brands built to <em>outlast</em></h1>
+        <p>We don't chase trends. We build foundations. Every brand we create is designed to grow stronger with time—because the best brands are the ones that never go out of style.</p>
+      </div>
+    </section>
+
+    <!-- Story -->
+    <section class="story-section">
+      <div class="story-container">
+        <div class="story-header">
+          <h2>Our story</h2>
+        </div>
+        
+        <div class="story-content">
+          <div>
+            <p>FutureProof was founded in 2025 in the Netherlands with a simple belief: the best brands are built to last. In a world obsessed with trends and quick fixes, we saw an opportunity to do things differently.</p>
+            <p>We started with a question: What if we designed every brand as if it needed to stand for 50 years? This thinking shapes everything we do—from the strategies we develop to the identities we create.</p>
+          </div>
+          <div>
+            <p>Today, we work with ambitious companies who share our vision for longevity. We're not the studio for everyone—and that's intentional. We're selective about who we work with because great partnerships lead to great work.</p>
+            <p>Our team brings together strategic thinking and creative execution. We believe in honest conversations, thorough research, and designs that solve real problems.</p>
+          </div>
+        </div>
+        
+        <blockquote class="story-highlight">
+          "We don't just create brands—we build foundations for companies to grow on for decades to come."
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- Manifesto -->
+    <section class="manifesto-section">
+      <div class="manifesto-content">
+        <div class="manifesto-intro">
+          <h2>What we believe</h2>
+          <p>These principles guide everything we do—from the strategies we develop to the pixels we push.</p>
+        </div>
+        
+        <div class="manifesto-item">
+          <span class="manifesto-number">01</span>
+          <div class="manifesto-text">
+            <h3>Timeless over trendy</h3>
+            <p>Trends fade. Principles endure. We design for the long game, creating brands that feel as relevant in ten years as they do today. This means saying no to fleeting aesthetics and yes to considered, purposeful design.</p>
+          </div>
+        </div>
+        
+        <div class="manifesto-item">
+          <span class="manifesto-number">02</span>
+          <div class="manifesto-text">
+            <h3>Strategy before style</h3>
+            <p>Beautiful design without strategy is just decoration. Every visual choice we make is rooted in research, insight, and clear business objectives. The best brands don't just look good—they work.</p>
+          </div>
+        </div>
+        
+        <div class="manifesto-item">
+          <span class="manifesto-number">03</span>
+          <div class="manifesto-text">
+            <h3>Clarity is kindness</h3>
+            <p>In a world of noise, clarity cuts through. We strip away the unnecessary to reveal what matters most. Simple doesn't mean simplistic—it means distilled, refined, and unmistakably clear.</p>
+          </div>
+        </div>
+        
+        <div class="manifesto-item">
+          <span class="manifesto-number">04</span>
+          <div class="manifesto-text">
+            <h3>Quality takes time</h3>
+            <p>Great work can't be rushed. We take the time to understand, explore, and refine. Because shortcuts create problems, and problems are expensive. Getting it right the first time is always worth the wait.</p>
+          </div>
+        </div>
+        
+        <div class="manifesto-item">
+          <span class="manifesto-number">05</span>
+          <div class="manifesto-text">
+            <h3>Partnership, not transactions</h3>
+            <p>We don't do one-off projects. We build relationships. When we work together, we become an extension of your team—invested in your success for the long haul, not just the deliverable.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values -->
+    <section class="values-section">
+      <div class="values-header">
+        <span class="values-label">Core Values</span>
+        <h2>What drives <em>us</em></h2>
+        <p>The values that shape our work, our relationships, and our studio culture.</p>
+      </div>
+      
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="8" x2="12" y2="12"/>
+              <line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+          </div>
+          <h3>Honesty</h3>
+          <p>We tell you what you need to hear, not what you want to hear. Honest feedback leads to better outcomes.</p>
+        </div>
+        
+        <div class="value-card">
+          <div class="value-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+              <path d="M2 17l10 5 10-5"/>
+              <path d="M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <h3>Craft</h3>
+          <p>Every detail matters. We obsess over the little things because they add up to something extraordinary.</p>
+        </div>
+        
+        <div class="value-card">
+          <div class="value-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <h3>Collaboration</h3>
+          <p>The best ideas emerge from open dialogue. We work with you, not just for you.</p>
+        </div>
+        
+        <div class="value-card">
+          <div class="value-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            </svg>
+          </div>
+          <h3>Consistency</h3>
+          <p>Reliability builds trust. We deliver what we promise, every time, on time.</p>
+        </div>
+        
+        <div class="value-card">
+          <div class="value-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+            </svg>
+          </div>
+          <h3>Curiosity</h3>
+          <p>We never stop learning. New challenges keep us sharp and our solutions fresh.</p>
+        </div>
+        
+        <div class="value-card">
+          <div class="value-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+          </div>
+          <h3>Accountability</h3>
+          <p>We own our work and our mistakes. Taking responsibility is how we grow.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team -->
+    <section class="team-section">
+      <div class="team-header">
+        <span class="team-label">The Team</span>
+        <h2>People behind the <em>work</em></h2>
+        <p>A tight-knit team of strategists, designers, and problem-solvers.</p>
+      </div>
+      
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar">SVB</div>
+          <h3>Samuel Vikse Bruvik</h3>
+          <p class="team-role">Founder & Creative Director</p>
+          <p class="team-bio">Strategic thinker with a passion for building brands that stand the test of time.</p>
+        </div>
+        
+        <div class="team-card">
+          <div class="team-avatar">+</div>
+          <h3>Your name here?</h3>
+          <p class="team-role">Growing Team</p>
+          <p class="team-bio">We're always looking for talented people who share our vision. Get in touch.</p>
+        </div>
+        
+        <div class="team-card">
+          <div class="team-avatar">+</div>
+          <h3>Collaborate with us</h3>
+          <p class="team-role">Partners</p>
+          <p class="team-bio">We work with a network of trusted specialists to deliver comprehensive solutions.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quote -->
+    <section class="quote-section">
+      <div class="quote-content">
+        <div class="quote-mark">"</div>
+        <p class="quote-text">Good design is obvious. Great design is transparent.</p>
+        <span class="quote-author">— Joe Sparano</span>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats-section">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">2025</div>
+          <p class="stat-label">Founded</p>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">NL</div>
+          <p class="stat-label">Based</p>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">∞</div>
+          <p class="stat-label">Dedication</p>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">50+</div>
+          <p class="stat-label">Years Vision</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="about-cta">
+      <div class="about-cta-content">
+        <h2>Ready to build something <em>lasting?</em></h2>
+        <p>Let's create a brand that stands the test of time. We'd love to hear about your vision.</p>
+        <a href="/contact.html" class="btn-primary">Start a conversation</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <img src="assets/logo.svg" alt="FutureProof" class="footer-logo">
+        <p>Building brands that outlast the trends. Strategy, identity, and digital experiences.</p>
+      </div>
+      <div class="footer-nav">
+        <div class="footer-column">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/work.html">Work</a></li>
+            <li><a href="/services.html">Services</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="/privacy.html">Privacy Policy</a></li>
+            <li><a href="/terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="https://instagram.com/tryfutureproof" target="_blank">Instagram</a></li>
+            <li><a href="https://tiktok.com/@futureproofstudio" target="_blank">TikTok</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:post@svbruvik.no">post@svbruvik.no</a></li>
+            <li><span>Netherlands</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 FutureProof. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" aria-label="Scroll to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <!-- Cookie Consent Banner -->
+  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Cookie consent">
+    <div class="cookie-content">
+      <div class="cookie-text">
+        <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies. <a href="/privacy.html">Learn more</a></p>
+      </div>
+      <div class="cookie-buttons">
+        <button class="cookie-btn cookie-btn-decline" id="cookieDecline">Decline</button>
+        <button class="cookie-btn cookie-btn-accept" id="cookieAccept">Accept</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Cookie Consent
+    const cookieBanner = document.getElementById('cookieBanner');
+    const cookieAccept = document.getElementById('cookieAccept');
+    const cookieDecline = document.getElementById('cookieDecline');
+    
+    if (!localStorage.getItem('cookieConsent')) {
+      setTimeout(() => cookieBanner?.classList.add('visible'), 1500);
+    } else {
+      cookieBanner?.classList.add('hidden');
+    }
+    
+    cookieAccept?.addEventListener('click', () => {
+      localStorage.setItem('cookieConsent', 'accepted');
+      cookieBanner?.classList.remove('visible');
+      setTimeout(() => cookieBanner?.classList.add('hidden'), 400);
+    });
+    
+    cookieDecline?.addEventListener('click', () => {
+      localStorage.setItem('cookieConsent', 'declined');
+      cookieBanner?.classList.remove('visible');
+      setTimeout(() => cookieBanner?.classList.add('hidden'), 400);
+    });
+
+    // Scroll to top on page load
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+
+    // Preloader
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.querySelector('.preloader')?.classList.add('loaded');
+      }, 800);
+    });
+
+    // Header scroll effect
+    const nav = document.querySelector('.main-nav');
+    const scrollTopBtn = document.querySelector('.scroll-to-top');
+    
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      nav?.classList.toggle('scrolled', y > 50);
+      scrollTopBtn?.classList.toggle('visible', y > 500);
+    }, { passive: true });
+
+    scrollTopBtn?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Mobile Menu
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    const closeMenu = () => {
+      menuToggle?.classList.remove('active');
+      navLinks?.classList.remove('active');
+      menuToggle?.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    };
+    
+    menuToggle?.addEventListener('click', () => {
+      const isOpen = menuToggle.classList.toggle('active');
+      navLinks?.classList.toggle('active');
+      menuToggle.setAttribute('aria-expanded', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+    
+    navLinks?.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+
+    // Animate elements on scroll
+    const animatedElements = document.querySelectorAll('.team-card, .stat-item, .value-card, .manifesto-item');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }, index * 100);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    animatedElements.forEach(item => {
+      item.style.opacity = '0';
+      item.style.transform = 'translateY(30px)';
+      item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      observer.observe(item);
+    });
+  </script>
+</body>
+</html>

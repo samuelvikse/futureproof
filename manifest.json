@@ -1,0 +1,20 @@
+{
+  "name": "FutureProof — Branding & Digital Studio",
+  "short_name": "FutureProof",
+  "description": "Building brands that outlast the trends. Strategy, identity, and digital experiences.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#53654e",
+  "theme_color": "#53654e",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/assets/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "design"],
+  "lang": "en"
+}

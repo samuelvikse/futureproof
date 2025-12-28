@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services — FutureProof</title>
+  <meta name="description" content="Explore our full range of branding, identity, digital, and marketing services designed to build brands that last.">
+  
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://use.typekit.net" crossorigin>
+  <link rel="preconnect" href="https://p.typekit.net" crossorigin>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+  
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#53654e">
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://futureproof.studio/services">
+  <meta property="og:title" content="Services — FutureProof">
+  <meta property="og:description" content="Explore our full range of branding, identity, digital, and marketing services designed to build brands that last.">
+  <meta property="og:image" content="https://futureproof.studio/assets/images/og-image.jpg">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Services — FutureProof">
+  <meta name="twitter:description" content="Explore our full range of branding, identity, digital, and marketing services designed to build brands that last.">
+  <meta name="twitter:image" content="https://futureproof.studio/assets/images/og-image.jpg">
+
+  <!-- Adobe Fonts: Sofia Pro -->
+  <link rel="stylesheet" href="https://use.typekit.net/ngj4ynz.css">
+
+  <!-- Web Manifest -->
+  <link rel="manifest" href="/manifest.json">
+
+  <!-- Your CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <style>
+    /* Services Page Specific Styles */
+    .services-hero {
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 140px 20px 80px;
+      background: linear-gradient(135deg, var(--color-secondary), var(--color-dark));
+    }
+    
+    .services-hero-content {
+      max-width: 700px;
+    }
+    
+    .services-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      padding: 10px 20px;
+      border: 1px solid rgba(244, 232, 216, 0.3);
+      border-radius: 30px;
+      margin-bottom: 24px;
+    }
+    
+    .services-hero h1 {
+      font-size: 3.5rem;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    
+    .services-hero h1 em {
+      font-style: italic;
+      color: rgba(244, 232, 216, 0.7);
+    }
+    
+    .services-hero p {
+      font-size: 1.15rem;
+      color: rgba(244, 232, 216, 0.8);
+      line-height: 1.7;
+    }
+    
+    /* Services Grid Section */
+    .services-section {
+      padding: 100px 20px 120px;
+      background: var(--color-primary);
+    }
+    
+    .services-intro {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 70px;
+    }
+    
+    .services-intro h2 {
+      font-size: 2.2rem;
+      color: var(--color-secondary);
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+    
+    .services-intro p {
+      font-size: 1.05rem;
+      color: rgba(83, 101, 78, 0.7);
+      line-height: 1.7;
+    }
+    
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    
+    .service-item {
+      background: #fff;
+      border-radius: 20px;
+      padding: 45px 40px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      border: 1px solid rgba(83, 101, 78, 0.08);
+    }
+    
+    .service-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 60px rgba(83, 101, 78, 0.12);
+    }
+    
+    .service-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--color-secondary);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    
+    .service-item:hover::before {
+      transform: scaleX(1);
+    }
+    
+    .service-number {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: rgba(83, 101, 78, 0.3);
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+    
+    .service-icon {
+      width: 56px;
+      height: 56px;
+      background: rgba(83, 101, 78, 0.08);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      transition: all 0.3s ease;
+    }
+    
+    .service-item:hover .service-icon {
+      background: var(--color-secondary);
+    }
+    
+    .service-icon svg {
+      width: 26px;
+      height: 26px;
+      stroke: var(--color-secondary);
+      stroke-width: 1.5;
+      transition: stroke 0.3s ease;
+    }
+    
+    .service-item:hover .service-icon svg {
+      stroke: var(--color-primary);
+    }
+    
+    .service-item h3 {
+      font-size: 1.4rem;
+      color: var(--color-secondary);
+      letter-spacing: -0.3px;
+      margin-bottom: 12px;
+    }
+    
+    .service-item p {
+      font-size: 0.95rem;
+      color: rgba(83, 101, 78, 0.7);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+    
+    .service-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    
+    .service-feature {
+      font-size: 0.7rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: rgba(83, 101, 78, 0.5);
+      padding: 6px 12px;
+      background: rgba(83, 101, 78, 0.06);
+      border-radius: 20px;
+    }
+    
+    /* Process Section */
+    .process-section {
+      padding: 120px 20px;
+      background: linear-gradient(180deg, var(--color-secondary), var(--color-dark));
+    }
+    
+    .process-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 70px;
+    }
+    
+    .process-label {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      padding: 10px 20px;
+      border: 1px solid rgba(244, 232, 216, 0.3);
+      border-radius: 30px;
+      margin-bottom: 24px;
+    }
+    
+    .process-header h2 {
+      font-size: 2.8rem;
+      letter-spacing: -1.5px;
+      margin-bottom: 16px;
+    }
+    
+    .process-header h2 em {
+      font-style: italic;
+      color: rgba(244, 232, 216, 0.7);
+    }
+    
+    .process-header p {
+      font-size: 1.1rem;
+      color: rgba(244, 232, 216, 0.7);
+      line-height: 1.7;
+    }
+    
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    
+    .process-step {
+      text-align: center;
+      padding: 40px 25px;
+      background: rgba(244, 232, 216, 0.05);
+      border: 1px solid rgba(244, 232, 216, 0.1);
+      border-radius: 16px;
+      transition: all 0.3s ease;
+    }
+    
+    .process-step:hover {
+      background: rgba(244, 232, 216, 0.08);
+      transform: translateY(-5px);
+    }
+    
+    .step-number {
+      width: 50px;
+      height: 50px;
+      background: var(--color-primary);
+      color: var(--color-secondary);
+      font-size: 1.2rem;
+      font-weight: 600;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+    
+    .process-step h3 {
+      font-size: 1.15rem;
+      margin-bottom: 10px;
+      letter-spacing: -0.3px;
+    }
+    
+    .process-step p {
+      font-size: 0.9rem;
+      color: rgba(244, 232, 216, 0.6);
+      line-height: 1.6;
+    }
+    
+    /* CTA Section */
+    .services-cta {
+      padding: 120px 20px;
+      text-align: center;
+      background: var(--color-primary);
+    }
+    
+    .services-cta-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .services-cta h2 {
+      font-size: 2.5rem;
+      color: var(--color-secondary);
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+    
+    .services-cta p {
+      font-size: 1.1rem;
+      color: rgba(83, 101, 78, 0.7);
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+    
+    .services-cta .btn-primary {
+      display: inline-block;
+      padding: 18px 48px;
+      background: var(--color-secondary);
+      color: var(--color-primary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      border-radius: 50px;
+      transition: all 0.3s;
+    }
+    
+    .services-cta .btn-primary:hover {
+      background: var(--color-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(83, 101, 78, 0.2);
+    }
+    
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .process-steps {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .services-hero {
+        padding: 120px 20px 60px;
+        min-height: auto;
+      }
+      
+      .services-hero h1 {
+        font-size: 2.4rem;
+      }
+      
+      .services-section {
+        padding: 70px 20px 80px;
+      }
+      
+      .services-intro {
+        margin-bottom: 50px;
+      }
+      
+      .services-intro h2 {
+        font-size: 1.8rem;
+      }
+      
+      .services-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .service-item {
+        padding: 35px 28px;
+      }
+      
+      .service-item h3 {
+        font-size: 1.25rem;
+      }
+      
+      .process-section {
+        padding: 80px 20px;
+      }
+      
+      .process-header h2 {
+        font-size: 2rem;
+      }
+      
+      .process-steps {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      
+      .process-step {
+        padding: 30px 20px;
+      }
+      
+      .services-cta {
+        padding: 80px 20px;
+      }
+      
+      .services-cta h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Skip to content -->
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Preloader -->
+  <div class="preloader">
+    <div class="preloader-content">
+      <img src="assets/logo.svg" alt="" class="preloader-logo">
+      <div class="preloader-bar"><div class="preloader-progress"></div></div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <nav class="main-nav">
+      <a href="/" class="logo">
+        <img src="assets/logo.svg" alt="FutureProof logo" class="logo-img">
+      </a>
+
+      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+      </button>
+
+      <ul class="nav-links">
+        <li><a href="/work.html" data-text="Work"><span>Work</span></a></li>
+        <li><a href="/services.html" data-text="Services" class="active"><span>Services</span></a></li>
+        <li><a href="/about.html" data-text="About"><span>About</span></a></li>
+        <li><a href="/contact.html" data-text="Contact"><span>Contact</span></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="page-transition">
+    <!-- Hero -->
+    <section class="services-hero">
+      <div class="services-hero-content">
+        <span class="services-badge">What We Do</span>
+        <h1>Services built to <em>last</em></h1>
+        <p>From strategy to execution, we offer a comprehensive suite of branding and digital services designed to build brands that stand the test of time.</p>
+      </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="services-section">
+      <div class="services-intro">
+        <h2>Our core services</h2>
+        <p>Each service is crafted with longevity in mind—no trends, no shortcuts, just strategic work that delivers lasting results.</p>
+      </div>
+      
+      <div class="services-grid">
+        <!-- Branding -->
+        <div class="service-item">
+          <span class="service-number">01</span>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+              <path d="M2 17l10 5 10-5"/>
+              <path d="M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <h3>Branding</h3>
+          <p>Strategic brand foundations that define who you are and why it matters—built to last decades, not seasons.</p>
+          <div class="service-features">
+            <span class="service-feature">Brand Strategy</span>
+            <span class="service-feature">Positioning</span>
+            <span class="service-feature">Messaging</span>
+            <span class="service-feature">Brand Architecture</span>
+          </div>
+        </div>
+        
+        <!-- Visual Identity -->
+        <div class="service-item">
+          <span class="service-number">02</span>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <circle cx="12" cy="12" r="6"/>
+              <circle cx="12" cy="12" r="2"/>
+            </svg>
+          </div>
+          <h3>Visual Identity</h3>
+          <p>Logos, typography, and design systems that age like fine wine—distinctive, memorable, and timeless.</p>
+          <div class="service-features">
+            <span class="service-feature">Logo Design</span>
+            <span class="service-feature">Typography</span>
+            <span class="service-feature">Color Systems</span>
+            <span class="service-feature">Brand Guidelines</span>
+          </div>
+        </div>
+        
+        <!-- Websites -->
+        <div class="service-item">
+          <span class="service-number">03</span>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+              <line x1="8" y1="21" x2="16" y2="21"/>
+              <line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+          </div>
+          <h3>Websites</h3>
+          <p>Fast, beautiful digital experiences engineered for clarity, conversion, and long-term growth.</p>
+          <div class="service-features">
+            <span class="service-feature">Web Design</span>
+            <span class="service-feature">Development</span>
+            <span class="service-feature">E-commerce</span>
+            <span class="service-feature">CMS Integration</span>
+          </div>
+        </div>
+        
+        <!-- E-mail Marketing -->
+        <div class="service-item">
+          <span class="service-number">04</span>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
+          <h3>E-mail Marketing</h3>
+          <p>Strategic campaigns that nurture real relationships and drive meaningful, measurable results.</p>
+          <div class="service-features">
+            <span class="service-feature">Campaign Strategy</span>
+            <span class="service-feature">Automation</span>
+            <span class="service-feature">Newsletter Design</span>
+            <span class="service-feature">Analytics</span>
+          </div>
+        </div>
+        
+        <!-- AI Outreach -->
+        <div class="service-item">
+          <span class="service-number">05</span>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2a4 4 0 0 1 4 4v2a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4z"/>
+              <path d="M18 14h.01"/>
+              <path d="M6 14h.01"/>
+              <path d="M12 17v4"/>
+              <path d="M8 21h8"/>
+              <path d="M18 9a6 6 0 0 1-12 0"/>
+            </svg>
+          </div>
+          <h3>AI Outreach</h3>
+          <p>Smart automation that scales your reach while keeping communication personal and authentically human.</p>
+          <div class="service-features">
+            <span class="service-feature">Lead Generation</span>
+            <span class="service-feature">Personalization</span>
+            <span class="service-feature">Automation</span>
+            <span class="service-feature">CRM Integration</span>
+          </div>
+        </div>
+        
+        <!-- Visual Marketing -->
+        <div class="service-item">
+          <span class="service-number">06</span>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <polyline points="21 15 16 10 5 21"/>
+            </svg>
+          </div>
+          <h3>Visual Marketing</h3>
+          <p>Bold visuals that cut through the noise and communicate your story with clarity and impact.</p>
+          <div class="service-features">
+            <span class="service-feature">Social Media</span>
+            <span class="service-feature">Ad Creatives</span>
+            <span class="service-feature">Photography</span>
+            <span class="service-feature">Video Content</span>
+          </div>
+        </div>
+        
+        <!-- Profile Building -->
+        <div class="service-item">
+          <span class="service-number">07</span>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </div>
+          <h3>Profile Building</h3>
+          <p>Position yourself as the go-to authority in your industry through strategic content and presence.</p>
+          <div class="service-features">
+            <span class="service-feature">LinkedIn Strategy</span>
+            <span class="service-feature">Thought Leadership</span>
+            <span class="service-feature">Content Planning</span>
+            <span class="service-feature">Personal Branding</span>
+          </div>
+        </div>
+        
+        <!-- Graphical Design -->
+        <div class="service-item">
+          <span class="service-number">08</span>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 19l7-7 3 3-7 7-3-3z"/>
+              <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
+              <path d="M2 2l7.586 7.586"/>
+              <circle cx="11" cy="11" r="2"/>
+            </svg>
+          </div>
+          <h3>Graphical Design</h3>
+          <p>Custom illustrations and layouts that make every brand touchpoint uniquely and unmistakably yours.</p>
+          <div class="service-features">
+            <span class="service-feature">Print Design</span>
+            <span class="service-feature">Illustrations</span>
+            <span class="service-feature">Packaging</span>
+            <span class="service-feature">Presentations</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+      <div class="process-header">
+        <span class="process-label">How We Work</span>
+        <h2>Our <em>process</em></h2>
+        <p>A proven approach that delivers consistent results, from discovery to delivery.</p>
+      </div>
+      
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-number">1</div>
+          <h3>Discovery</h3>
+          <p>We dive deep into your business, audience, and goals to understand what makes you unique.</p>
+        </div>
+        
+        <div class="process-step">
+          <div class="step-number">2</div>
+          <h3>Strategy</h3>
+          <p>We develop a clear roadmap that aligns your brand with your business objectives.</p>
+        </div>
+        
+        <div class="process-step">
+          <div class="step-number">3</div>
+          <h3>Creation</h3>
+          <p>We craft every element with precision, ensuring quality and consistency throughout.</p>
+        </div>
+        
+        <div class="process-step">
+          <div class="step-number">4</div>
+          <h3>Delivery</h3>
+          <p>We launch, refine, and provide ongoing support to ensure lasting success.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="services-cta">
+      <div class="services-cta-content">
+        <h2>Ready to get started?</h2>
+        <p>Let's discuss how our services can help build a brand that stands the test of time.</p>
+        <a href="/contact.html" class="btn-primary">Start a conversation</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <img src="assets/logo.svg" alt="FutureProof" class="footer-logo">
+        <p>Building brands that outlast the trends. Strategy, identity, and digital experiences.</p>
+      </div>
+      <div class="footer-nav">
+        <div class="footer-column">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/work.html">Work</a></li>
+            <li><a href="/services.html">Services</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="/privacy.html">Privacy Policy</a></li>
+            <li><a href="/terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="https://instagram.com/tryfutureproof" target="_blank">Instagram</a></li>
+            <li><a href="https://tiktok.com/@futureproofstudio" target="_blank">TikTok</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:post@svbruvik.no">post@svbruvik.no</a></li>
+            <li><span>Netherlands</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 FutureProof. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" aria-label="Scroll to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <!-- Cookie Consent Banner -->
+  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Cookie consent">
+    <div class="cookie-content">
+      <div class="cookie-text">
+        <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies. <a href="/privacy.html">Learn more</a></p>
+      </div>
+      <div class="cookie-buttons">
+        <button class="cookie-btn cookie-btn-decline" id="cookieDecline">Decline</button>
+        <button class="cookie-btn cookie-btn-accept" id="cookieAccept">Accept</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Cookie Consent
+    const cookieBanner = document.getElementById('cookieBanner');
+    const cookieAccept = document.getElementById('cookieAccept');
+    const cookieDecline = document.getElementById('cookieDecline');
+    
+    if (!localStorage.getItem('cookieConsent')) {
+      setTimeout(() => cookieBanner?.classList.add('visible'), 1500);
+    } else {
+      cookieBanner?.classList.add('hidden');
+    }
+    
+    cookieAccept?.addEventListener('click', () => {
+      localStorage.setItem('cookieConsent', 'accepted');
+      cookieBanner?.classList.remove('visible');
+      setTimeout(() => cookieBanner?.classList.add('hidden'), 400);
+    });
+    
+    cookieDecline?.addEventListener('click', () => {
+      localStorage.setItem('cookieConsent', 'declined');
+      cookieBanner?.classList.remove('visible');
+      setTimeout(() => cookieBanner?.classList.add('hidden'), 400);
+    });
+
+    // Scroll to top on page load
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+
+    // Preloader
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.querySelector('.preloader')?.classList.add('loaded');
+      }, 800);
+    });
+
+    // Header scroll effect
+    const nav = document.querySelector('.main-nav');
+    const scrollTopBtn = document.querySelector('.scroll-to-top');
+    
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      nav?.classList.toggle('scrolled', y > 50);
+      scrollTopBtn?.classList.toggle('visible', y > 500);
+    }, { passive: true });
+
+    scrollTopBtn?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Mobile Menu
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    const closeMenu = () => {
+      menuToggle?.classList.remove('active');
+      navLinks?.classList.remove('active');
+      menuToggle?.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    };
+    
+    menuToggle?.addEventListener('click', () => {
+      const isOpen = menuToggle.classList.toggle('active');
+      navLinks?.classList.toggle('active');
+      menuToggle.setAttribute('aria-expanded', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+    
+    navLinks?.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+
+    // Animate service items on scroll
+    const serviceItems = document.querySelectorAll('.service-item, .process-step');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }, index * 100);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    serviceItems.forEach(item => {
+      item.style.opacity = '0';
+      item.style.transform = 'translateY(30px)';
+      item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      observer.observe(item);
+    });
+  </script>
+</body>
+</html>

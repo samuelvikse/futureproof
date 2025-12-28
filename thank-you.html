@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Message Sent — FutureProof</title>
+  <meta name="description" content="Thank you for contacting FutureProof. We'll be in touch soon.">
+  <meta name="robots" content="noindex, nofollow">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="apple-touch-icon" href="/assets/favicon.svg">
+  
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#53654e">
+
+  <!-- Adobe Fonts: Sofia Pro -->
+  <link rel="stylesheet" href="https://use.typekit.net/ngj4ynz.css">
+
+  <!-- Web Manifest -->
+  <link rel="manifest" href="/manifest.json">
+
+  <!-- Your CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <style>
+    .thank-you {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, var(--color-secondary), var(--color-dark));
+    }
+    
+    .thank-you-content {
+      max-width: 500px;
+    }
+    
+    .thank-you-icon {
+      width: 80px;
+      height: 80px;
+      background: rgba(244, 232, 216, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 30px;
+      animation: scaleIn 0.5s ease-out;
+    }
+    
+    .thank-you-icon svg {
+      width: 40px;
+      height: 40px;
+      stroke: var(--color-primary);
+      stroke-width: 2;
+      animation: checkDraw 0.6s ease-out 0.3s both;
+    }
+    
+    @keyframes scaleIn {
+      from { transform: scale(0); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    
+    @keyframes checkDraw {
+      from { stroke-dashoffset: 50; opacity: 0; }
+      to { stroke-dashoffset: 0; opacity: 1; }
+    }
+    
+    .thank-you h1 {
+      font-size: 2.8rem;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+      animation: fadeInUp 0.6s ease-out 0.2s both;
+    }
+    
+    .thank-you p {
+      font-size: 1.1rem;
+      color: rgba(244, 232, 216, 0.8);
+      line-height: 1.7;
+      margin-bottom: 40px;
+      animation: fadeInUp 0.6s ease-out 0.35s both;
+    }
+    
+    .thank-you-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeInUp 0.6s ease-out 0.5s both;
+    }
+    
+    .thank-you .btn-primary {
+      display: inline-block;
+      padding: 16px 36px;
+      background: var(--color-primary);
+      color: var(--color-secondary);
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+    
+    .thank-you .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .thank-you .btn-secondary {
+      display: inline-block;
+      padding: 16px 36px;
+      color: var(--color-primary);
+      text-decoration: none;
+      font-weight: 500;
+      border: 1px solid rgba(244, 232, 216, 0.3);
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+    
+    .thank-you .btn-secondary:hover {
+      background: rgba(244, 232, 216, 0.1);
+      border-color: rgba(244, 232, 216, 0.5);
+    }
+    
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @media (max-width: 768px) {
+      .thank-you h1 {
+        font-size: 2rem;
+      }
+      
+      .thank-you-buttons {
+        flex-direction: column;
+      }
+      
+      .thank-you .btn-primary,
+      .thank-you .btn-secondary {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Skip to content -->
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Preloader -->
+  <div class="preloader">
+    <div class="preloader-content">
+      <img src="assets/logo.svg" alt="" class="preloader-logo">
+      <div class="preloader-bar"><div class="preloader-progress"></div></div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <nav class="main-nav">
+      <a href="/" class="logo">
+        <img src="assets/logo.svg" alt="FutureProof logo" class="logo-img">
+      </a>
+
+      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+      </button>
+
+      <ul class="nav-links">
+        <li><a href="/work.html" data-text="Work"><span>Work</span></a></li>
+        <li><a href="/services.html" data-text="Services"><span>Services</span></a></li>
+        <li><a href="/about.html" data-text="About"><span>About</span></a></li>
+        <li><a href="/contact.html" data-text="Contact"><span>Contact</span></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="page-transition">
+    <section class="thank-you">
+      <div class="thank-you-content">
+        <div class="thank-you-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12" style="stroke-dasharray: 50;"/>
+          </svg>
+        </div>
+        <h1>Message sent!</h1>
+        <p>Thank you for reaching out. We've received your message and will get back to you within 24 hours.</p>
+        <div class="thank-you-buttons">
+          <a href="/" class="btn-primary">Back to Home</a>
+          <a href="/contact.html" class="btn-secondary">Send Another</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <img src="assets/logo.svg" alt="FutureProof" class="footer-logo">
+        <p>Building brands that outlast the trends.</p>
+      </div>
+      <div class="footer-nav">
+        <div class="footer-column">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/work.html">Work</a></li>
+            <li><a href="/services.html">Services</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="/privacy.html">Privacy Policy</a></li>
+            <li><a href="/terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="https://instagram.com/tryfutureproof" target="_blank">Instagram</a></li>
+            <li><a href="https://tiktok.com/@futureproofstudio" target="_blank">TikTok</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:post@svbruvik.no">post@svbruvik.no</a></li>
+            <li><span>Netherlands</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 FutureProof. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" aria-label="Scroll to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <!-- Cookie Consent Banner -->
+  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Cookie consent">
+    <div class="cookie-content">
+      <div class="cookie-text">
+        <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies. <a href="/privacy.html">Learn more</a></p>
+      </div>
+      <div class="cookie-buttons">
+        <button class="cookie-btn cookie-btn-decline" id="cookieDecline">Decline</button>
+        <button class="cookie-btn cookie-btn-accept" id="cookieAccept">Accept</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Cookie Consent
+    const cookieBanner = document.getElementById('cookieBanner');
+    const cookieAccept = document.getElementById('cookieAccept');
+    const cookieDecline = document.getElementById('cookieDecline');
+    
+    if (!localStorage.getItem('cookieConsent')) {
+      setTimeout(() => cookieBanner?.classList.add('visible'), 1500);
+    } else {
+      cookieBanner?.classList.add('hidden');
+    }
+    
+    cookieAccept?.addEventListener('click', () => {
+      localStorage.setItem('cookieConsent', 'accepted');
+      cookieBanner?.classList.remove('visible');
+      setTimeout(() => cookieBanner?.classList.add('hidden'), 400);
+    });
+    
+    cookieDecline?.addEventListener('click', () => {
+      localStorage.setItem('cookieConsent', 'declined');
+      cookieBanner?.classList.remove('visible');
+      setTimeout(() => cookieBanner?.classList.add('hidden'), 400);
+    });
+
+    // Scroll to top on page load
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+
+    // Preloader
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.querySelector('.preloader')?.classList.add('loaded');
+        document.body.classList.add('loaded');
+      }, 600);
+    });
+
+    // Header scroll effect & scroll-to-top button
+    const nav = document.querySelector('.main-nav');
+    const scrollTopBtn = document.querySelector('.scroll-to-top');
+    
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      nav?.classList.toggle('scrolled', y > 50);
+      scrollTopBtn?.classList.toggle('visible', y > 500);
+    }, { passive: true });
+
+    scrollTopBtn?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Mobile Menu
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    const closeMenu = () => {
+      menuToggle?.classList.remove('active');
+      navLinks?.classList.remove('active');
+      menuToggle?.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    };
+    
+    menuToggle?.addEventListener('click', () => {
+      const isOpen = menuToggle.classList.toggle('active');
+      navLinks?.classList.toggle('active');
+      menuToggle.setAttribute('aria-expanded', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+    
+    navLinks?.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+  </script>
+</body>
+</html>

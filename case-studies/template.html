@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[Project Name] — FutureProof Case Study</title>
+  <meta name="description" content="Explore our case study for [Project Name]. See how we helped [Client] achieve their branding goals.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="apple-touch-icon" href="/assets/favicon.svg">
+  
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#53654e">
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://futureproof.studio/case-studies/project-name">
+  <meta property="og:title" content="[Project Name] — FutureProof Case Study">
+  <meta property="og:description" content="Explore our case study for [Project Name]. See how we helped [Client] achieve their branding goals.">
+  <meta property="og:image" content="https://futureproof.studio/assets/images/projects/project-name-og.jpg">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="[Project Name] — FutureProof Case Study">
+  <meta name="twitter:description" content="Explore our case study for [Project Name]. See how we helped [Client] achieve their branding goals.">
+  <meta name="twitter:image" content="https://futureproof.studio/assets/images/projects/project-name-og.jpg">
+
+  <!-- Adobe Fonts: Sofia Pro -->
+  <link rel="stylesheet" href="https://use.typekit.net/ngj4ynz.css">
+
+  <!-- Web Manifest -->
+  <link rel="manifest" href="/manifest.json">
+
+  <!-- Your CSS -->
+  <link rel="stylesheet" href="../css/style.css">
+  
+  <style>
+    /* Case Study Specific Styles */
+    
+    /* Hero */
+    .case-hero {
+      min-height: 80vh;
+      display: flex;
+      align-items: flex-end;
+      padding: 140px 20px 80px;
+      background: linear-gradient(135deg, var(--color-secondary), var(--color-dark));
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .case-hero-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0.15;
+    }
+    
+    .case-hero-content {
+      max-width: 900px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .case-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(244, 232, 216, 0.6);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 30px;
+      transition: color 0.3s;
+    }
+    
+    .case-back:hover {
+      color: var(--color-primary);
+    }
+    
+    .case-back svg {
+      width: 16px;
+      height: 16px;
+    }
+    
+    .case-tags {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    
+    .case-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 8px 16px;
+      background: rgba(244, 232, 216, 0.1);
+      border: 1px solid rgba(244, 232, 216, 0.2);
+      border-radius: 20px;
+    }
+    
+    .case-hero h1 {
+      font-size: 4rem;
+      letter-spacing: -2px;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+    
+    .case-hero p {
+      font-size: 1.25rem;
+      color: rgba(244, 232, 216, 0.75);
+      line-height: 1.7;
+      max-width: 600px;
+    }
+    
+    /* Project Info Bar */
+    .case-info {
+      padding: 50px 20px;
+      background: var(--color-dark);
+      border-bottom: 1px solid rgba(244, 232, 216, 0.1);
+    }
+    
+    .case-info-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .case-info-item h4 {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: rgba(244, 232, 216, 0.4);
+      margin-bottom: 8px;
+    }
+    
+    .case-info-item p {
+      font-size: 1rem;
+      font-weight: 500;
+    }
+    
+    /* Content Sections */
+    .case-content {
+      padding: 100px 20px;
+      background: var(--color-primary);
+    }
+    
+    .case-section {
+      max-width: 800px;
+      margin: 0 auto 80px;
+    }
+    
+    .case-section:last-child {
+      margin-bottom: 0;
+    }
+    
+    .case-section h2 {
+      font-size: 2rem;
+      color: var(--color-secondary);
+      letter-spacing: -1px;
+      margin-bottom: 24px;
+    }
+    
+    .case-section p {
+      font-size: 1.1rem;
+      color: rgba(83, 101, 78, 0.75);
+      line-height: 1.9;
+      margin-bottom: 20px;
+    }
+    
+    .case-section ul {
+      list-style: none;
+      margin: 30px 0;
+    }
+    
+    .case-section ul li {
+      font-size: 1.05rem;
+      color: rgba(83, 101, 78, 0.75);
+      padding-left: 28px;
+      position: relative;
+      margin-bottom: 14px;
+    }
+    
+    .case-section ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--color-secondary);
+    }
+    
+    /* Full Width Image */
+    .case-image-full {
+      width: 100%;
+      margin: 60px 0;
+    }
+    
+    .case-image-full img {
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+    }
+    
+    .case-image-full figcaption {
+      text-align: center;
+      font-size: 0.85rem;
+      color: rgba(83, 101, 78, 0.5);
+      margin-top: 16px;
+    }
+    
+    /* Image Grid */
+    .case-images-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin: 60px 0;
+    }
+    
+    .case-images-grid img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+    
+    /* Quote */
+    .case-quote {
+      padding: 60px;
+      background: var(--color-secondary);
+      border-radius: 20px;
+      margin: 60px auto;
+      max-width: 800px;
+    }
+    
+    .case-quote blockquote {
+      font-size: 1.5rem;
+      font-style: italic;
+      color: var(--color-primary);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    
+    .case-quote cite {
+      display: block;
+      font-size: 0.9rem;
+      font-style: normal;
+      color: rgba(244, 232, 216, 0.7);
+    }
+    
+    /* Results */
+    .case-results {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin: 60px 0;
+    }
+    
+    .result-item {
+      text-align: center;
+      padding: 40px 20px;
+      background: rgba(83, 101, 78, 0.05);
+      border-radius: 16px;
+    }
+    
+    .result-number {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--color-secondary);
+      letter-spacing: -2px;
+      margin-bottom: 8px;
+    }
+    
+    .result-label {
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: rgba(83, 101, 78, 0.5);
+    }
+    
+    /* Next Project */
+    .case-next {
+      padding: 100px 20px;
+      background: linear-gradient(135deg, var(--color-secondary), var(--color-dark));
+      text-align: center;
+    }
+    
+    .case-next-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .case-next p {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: rgba(244, 232, 216, 0.5);
+      margin-bottom: 16px;
+    }
+    
+    .case-next h3 {
+      font-size: 2.5rem;
+      letter-spacing: -1px;
+      margin-bottom: 30px;
+    }
+    
+    .case-next h3 a {
+      color: var(--color-primary);
+      text-decoration: none;
+      transition: opacity 0.3s;
+    }
+    
+    .case-next h3 a:hover {
+      opacity: 0.7;
+    }
+    
+    .case-next .btn-primary {
+      display: inline-block;
+      padding: 16px 40px;
+      background: var(--color-primary);
+      color: var(--color-secondary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border-radius: 50px;
+      transition: all 0.3s;
+    }
+    
+    .case-next .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .case-hero {
+        padding: 120px 20px 60px;
+        min-height: auto;
+      }
+      
+      .case-hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .case-info-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px 20px;
+      }
+      
+      .case-content {
+        padding: 60px 20px;
+      }
+      
+      .case-section h2 {
+        font-size: 1.7rem;
+      }
+      
+      .case-images-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .case-quote {
+        padding: 40px 30px;
+      }
+      
+      .case-quote blockquote {
+        font-size: 1.2rem;
+      }
+      
+      .case-results {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      
+      .result-item {
+        padding: 30px 20px;
+      }
+      
+      .result-number {
+        font-size: 2.5rem;
+      }
+      
+      .case-next {
+        padding: 60px 20px;
+      }
+      
+      .case-next h3 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Skip to content -->
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Preloader -->
+  <div class="preloader">
+    <div class="preloader-content">
+      <img src="../assets/logo.svg" alt="" class="preloader-logo">
+      <div class="preloader-bar"><div class="preloader-progress"></div></div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <nav class="main-nav">
+      <a href="/" class="logo">
+        <img src="../assets/logo.svg" alt="FutureProof logo" class="logo-img">
+      </a>
+
+      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+      </button>
+
+      <ul class="nav-links">
+        <li><a href="/work.html" data-text="Work" class="active"><span>Work</span></a></li>
+        <li><a href="/services.html" data-text="Services"><span>Services</span></a></li>
+        <li><a href="/about.html" data-text="About"><span>About</span></a></li>
+        <li><a href="/contact.html" data-text="Contact"><span>Contact</span></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="page-transition">
+    <!-- Hero -->
+    <section class="case-hero">
+      <!-- Optional: Background image -->
+      <!-- <div class="case-hero-bg" style="background-image: url('../assets/images/projects/project-hero.jpg')"></div> -->
+      
+      <div class="case-hero-content">
+        <a href="/work.html" class="case-back">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+          </svg>
+          Back to Work
+        </a>
+        
+        <div class="case-tags">
+          <span class="case-tag">Branding</span>
+          <span class="case-tag">Visual Identity</span>
+          <span class="case-tag">Website</span>
+        </div>
+        
+        <h1>[Project Name]</h1>
+        <p>A brief one or two sentence description of the project and what was achieved. Make it compelling and results-focused.</p>
+      </div>
+    </section>
+
+    <!-- Project Info -->
+    <section class="case-info">
+      <div class="case-info-grid">
+        <div class="case-info-item">
+          <h4>Client</h4>
+          <p>[Client Name]</p>
+        </div>
+        <div class="case-info-item">
+          <h4>Industry</h4>
+          <p>[Industry]</p>
+        </div>
+        <div class="case-info-item">
+          <h4>Timeline</h4>
+          <p>[X weeks/months]</p>
+        </div>
+        <div class="case-info-item">
+          <h4>Year</h4>
+          <p>2025</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <article class="case-content">
+      <!-- Challenge -->
+      <section class="case-section">
+        <h2>The Challenge</h2>
+        <p>Describe the problem or opportunity the client faced. What was the context? Why did they need help? What were the stakes?</p>
+        <p>Be specific about the challenges and paint a picture of the situation before your involvement.</p>
+      </section>
+      
+      <!-- Full Width Image -->
+      <figure class="case-image-full">
+        <img src="../assets/images/projects/project-image-1.jpg" alt="Project visual" loading="lazy">
+        <figcaption>Caption describing the image</figcaption>
+      </figure>
+      
+      <!-- Approach -->
+      <section class="case-section">
+        <h2>Our Approach</h2>
+        <p>Explain your strategic approach. How did you tackle the problem? What was your methodology?</p>
+        <ul>
+          <li>Key strategic decision or approach element</li>
+          <li>Another important methodology point</li>
+          <li>Third key aspect of your process</li>
+          <li>Final strategic consideration</li>
+        </ul>
+        <p>Add any additional context about why you chose this approach and how it aligned with the client's goals.</p>
+      </section>
+      
+      <!-- Image Grid -->
+      <div class="case-images-grid">
+        <img src="../assets/images/projects/project-image-2.jpg" alt="Project detail" loading="lazy">
+        <img src="../assets/images/projects/project-image-3.jpg" alt="Project detail" loading="lazy">
+      </div>
+      
+      <!-- Solution -->
+      <section class="case-section">
+        <h2>The Solution</h2>
+        <p>Detail the final deliverables. What did you create? Be descriptive about the design decisions, strategic elements, and how everything came together.</p>
+        <p>Highlight the key features and explain why they matter to the client's success.</p>
+      </section>
+      
+      <!-- Quote -->
+      <div class="case-quote">
+        <blockquote>"A testimonial from the client about working with FutureProof and the results they achieved."</blockquote>
+        <cite>— Client Name, Title at Company</cite>
+      </div>
+      
+      <!-- Results -->
+      <section class="case-section">
+        <h2>The Results</h2>
+        <p>Share the impact and outcomes. What changed for the client? Include both quantitative metrics and qualitative improvements.</p>
+        
+        <div class="case-results">
+          <div class="result-item">
+            <div class="result-number">+150%</div>
+            <p class="result-label">Metric Improvement</p>
+          </div>
+          <div class="result-item">
+            <div class="result-number">3x</div>
+            <p class="result-label">Another Metric</p>
+          </div>
+          <div class="result-item">
+            <div class="result-number">10k+</div>
+            <p class="result-label">Third Metric</p>
+          </div>
+        </div>
+        
+        <p>Wrap up with a final statement about the long-term impact and how this work set the client up for future success.</p>
+      </section>
+    </article>
+
+    <!-- Next Project -->
+    <section class="case-next">
+      <div class="case-next-content">
+        <p>Next Project</p>
+        <h3><a href="#">[Next Project Name] →</a></h3>
+        <a href="/work.html" class="btn-primary">View All Work</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <img src="../assets/logo.svg" alt="FutureProof" class="footer-logo">
+        <p>Building brands that outlast the trends. Strategy, identity, and digital experiences.</p>
+      </div>
+      <div class="footer-nav">
+        <div class="footer-column">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/work.html">Work</a></li>
+            <li><a href="/services.html">Services</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="/privacy.html">Privacy Policy</a></li>
+            <li><a href="/terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="https://instagram.com/tryfutureproof" target="_blank">Instagram</a></li>
+            <li><a href="https://tiktok.com/@futureproofstudio" target="_blank">TikTok</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:post@svbruvik.no">post@svbruvik.no</a></li>
+            <li><span>Netherlands</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 FutureProof. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" aria-label="Scroll to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <!-- Cookie Consent Banner -->
+  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Cookie consent">
+    <div class="cookie-content">
+      <div class="cookie-text">
+        <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies. <a href="/privacy.html">Learn more</a></p>
+      </div>
+      <div class="cookie-buttons">
+        <button class="cookie-btn cookie-btn-decline" id="cookieDecline">Decline</button>
+        <button class="cookie-btn cookie-btn-accept" id="cookieAccept">Accept</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Cookie Consent
+    const cookieBanner = document.getElementById('cookieBanner');
+    const cookieAccept = document.getElementById('cookieAccept');
+    const cookieDecline = document.getElementById('cookieDecline');
+    
+    if (!localStorage.getItem('cookieConsent')) {
+      setTimeout(() => cookieBanner?.classList.add('visible'), 1500);
+    } else {
+      cookieBanner?.classList.add('hidden');
+    }
+    
+    cookieAccept?.addEventListener('click', () => {
+      localStorage.setItem('cookieConsent', 'accepted');
+      cookieBanner?.classList.remove('visible');
+      setTimeout(() => cookieBanner?.classList.add('hidden'), 400);
+    });
+    
+    cookieDecline?.addEventListener('click', () => {
+      localStorage.setItem('cookieConsent', 'declined');
+      cookieBanner?.classList.remove('visible');
+      setTimeout(() => cookieBanner?.classList.add('hidden'), 400);
+    });
+
+    // Scroll to top on page load
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+
+    // Preloader
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.querySelector('.preloader')?.classList.add('loaded');
+      }, 800);
+    });
+
+    // Header scroll effect
+    const nav = document.querySelector('.main-nav');
+    const scrollTopBtn = document.querySelector('.scroll-to-top');
+    
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      nav?.classList.toggle('scrolled', y > 50);
+      scrollTopBtn?.classList.toggle('visible', y > 500);
+    }, { passive: true });
+
+    scrollTopBtn?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Mobile Menu
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    const closeMenu = () => {
+      menuToggle?.classList.remove('active');
+      navLinks?.classList.remove('active');
+      menuToggle?.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    };
+    
+    menuToggle?.addEventListener('click', () => {
+      const isOpen = menuToggle.classList.toggle('active');
+      navLinks?.classList.toggle('active');
+      menuToggle.setAttribute('aria-expanded', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+    
+    navLinks?.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+
+    // Lazy load images
+    document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+      img.addEventListener('load', () => img.classList.add('loaded'));
+    });
+  </script>
+</body>
+</html>

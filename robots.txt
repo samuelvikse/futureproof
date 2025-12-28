@@ -1,0 +1,12 @@
+# Robots.txt for FutureProof
+# https://futureproof.studio
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://futureproof.studio/sitemap.xml
+
+# Disallow admin or private areas (if any)
+Disallow: /admin/
+Disallow: /private/

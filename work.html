@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Work — FutureProof</title>
+  <meta name="description" content="Explore our portfolio of branding, identity, and digital projects built to stand the test of time.">
+  
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://use.typekit.net" crossorigin>
+  <link rel="preconnect" href="https://p.typekit.net" crossorigin>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+  
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#53654e">
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://futureproof.studio/work">
+  <meta property="og:title" content="Work — FutureProof">
+  <meta property="og:description" content="Explore our portfolio of branding, identity, and digital projects built to stand the test of time.">
+  <meta property="og:image" content="https://futureproof.studio/assets/images/og-image.jpg">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Work — FutureProof">
+  <meta name="twitter:description" content="Explore our portfolio of branding, identity, and digital projects built to stand the test of time.">
+  <meta name="twitter:image" content="https://futureproof.studio/assets/images/og-image.jpg">
+
+  <!-- Adobe Fonts: Sofia Pro -->
+  <link rel="stylesheet" href="https://use.typekit.net/ngj4ynz.css">
+
+  <!-- Web Manifest -->
+  <link rel="manifest" href="/manifest.json">
+
+  <!-- Your CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <style>
+    /* Work Page Specific Styles */
+    .work-hero {
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 140px 20px 80px;
+      background: linear-gradient(135deg, var(--color-secondary), var(--color-dark));
+      margin-bottom: 0;
+    }
+    
+    .work-hero-content {
+      max-width: 700px;
+    }
+    
+    .work-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      padding: 10px 20px;
+      border: 1px solid rgba(244, 232, 216, 0.3);
+      border-radius: 30px;
+      margin-bottom: 24px;
+    }
+    
+    .work-hero h1 {
+      font-size: 3.5rem;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    
+    .work-hero h1 em {
+      font-style: italic;
+      color: rgba(244, 232, 216, 0.7);
+    }
+    
+    .work-hero p {
+      font-size: 1.15rem;
+      color: rgba(244, 232, 216, 0.8);
+      line-height: 1.7;
+    }
+    
+    /* Filter Tabs */
+    .work-filters {
+      padding: 40px 20px;
+      background: var(--color-dark);
+      border-bottom: 1px solid rgba(244, 232, 216, 0.1);
+      position: sticky;
+      top: 50px;
+      z-index: 50;
+      margin-top: 0;
+    }
+    
+    main {
+      display: block;
+    }
+    
+    .filter-container {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      max-width: 1200px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+    }
+    
+    .filter-btn {
+      padding: 10px 24px;
+      font-family: "sofia-pro", sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: rgba(244, 232, 216, 0.6);
+      background: transparent;
+      border: 1px solid rgba(244, 232, 216, 0.15);
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .filter-btn:hover {
+      color: var(--color-primary);
+      border-color: rgba(244, 232, 216, 0.3);
+    }
+    
+    .filter-btn.active {
+      color: var(--color-secondary);
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+    }
+    
+    /* Work Grid */
+    .work-section {
+      padding: 80px 20px 120px;
+      background: linear-gradient(180deg, var(--color-dark), var(--color-secondary));
+    }
+    
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .work-card {
+      position: relative;
+      background: rgba(244, 232, 216, 0.05);
+      border: 1px solid rgba(244, 232, 216, 0.1);
+      border-radius: 20px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.4s ease;
+    }
+    
+    .work-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(244, 232, 216, 0.3);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+    }
+    
+    .work-card.featured {
+      grid-column: span 2;
+    }
+    
+    .work-image {
+      height: 280px;
+      overflow: hidden;
+    }
+    
+    .work-card.featured .work-image {
+      height: 400px;
+    }
+    
+    .work-image-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(244, 232, 216, 0.1), rgba(244, 232, 216, 0.03));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.5s ease;
+    }
+    
+    .work-image-placeholder span {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: rgba(244, 232, 216, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    
+    .work-card:hover .work-image-placeholder {
+      transform: scale(1.05);
+    }
+    
+    .work-card-content {
+      padding: 30px 35px 35px;
+    }
+    
+    .work-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+    
+    .work-tag {
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: rgba(244, 232, 216, 0.5);
+      padding: 5px 12px;
+      background: rgba(244, 232, 216, 0.08);
+      border-radius: 20px;
+    }
+    
+    .work-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      letter-spacing: -0.5px;
+      transition: color 0.3s;
+    }
+    
+    .work-card.featured h3 {
+      font-size: 2rem;
+    }
+    
+    .work-card:hover h3 {
+      color: #fff;
+    }
+    
+    .work-card p {
+      font-size: 0.95rem;
+      color: rgba(244, 232, 216, 0.6);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    
+    .work-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--color-primary);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: gap 0.3s;
+    }
+    
+    .work-link:hover {
+      gap: 12px;
+    }
+    
+    .work-link svg {
+      transition: transform 0.3s;
+    }
+    
+    .work-link:hover svg {
+      transform: translate(4px, -4px);
+    }
+    
+    .work-number {
+      position: absolute;
+      top: 25px;
+      right: 30px;
+      font-size: 4rem;
+      font-weight: 700;
+      color: rgba(244, 232, 216, 0.05);
+      line-height: 1;
+      transition: all 0.4s;
+      pointer-events: none;
+    }
+    
+    .work-card:hover .work-number {
+      color: rgba(244, 232, 216, 0.1);
+      transform: scale(1.1);
+    }
+    
+    /* CTA Section */
+    .work-cta {
+      padding: 120px 20px;
+      text-align: center;
+      background: var(--color-primary);
+    }
+    
+    .work-cta-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .work-cta h2 {
+      font-size: 2.5rem;
+      color: var(--color-secondary);
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+    
+    .work-cta p {
+      font-size: 1.1rem;
+      color: rgba(83, 101, 78, 0.7);
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+    
+    .work-cta .btn-primary {
+      display: inline-block;
+      padding: 18px 48px;
+      background: var(--color-secondary);
+      color: var(--color-primary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      border-radius: 50px;
+      transition: all 0.3s;
+    }
+    
+    .work-cta .btn-primary:hover {
+      background: var(--color-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(83, 101, 78, 0.2);
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .work-hero {
+        padding: 120px 20px 60px;
+        min-height: auto;
+      }
+      
+      .work-hero h1 {
+        font-size: 2.4rem;
+      }
+      
+      .work-filters {
+        padding: 24px 16px;
+        top: 44px;
+      }
+      
+      .filter-btn {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+      }
+      
+      .work-section {
+        padding: 50px 16px 80px;
+      }
+      
+      .work-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      
+      .work-card.featured {
+        grid-column: span 1;
+      }
+      
+      .work-image,
+      .work-card.featured .work-image {
+        height: 220px;
+      }
+      
+      .work-card-content {
+        padding: 24px;
+      }
+      
+      .work-card h3,
+      .work-card.featured h3 {
+        font-size: 1.3rem;
+      }
+      
+      .work-number {
+        font-size: 3rem;
+        top: 15px;
+        right: 20px;
+      }
+      
+      .work-cta {
+        padding: 80px 20px;
+      }
+      
+      .work-cta h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Skip to content -->
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Preloader -->
+  <div class="preloader">
+    <div class="preloader-content">
+      <img src="assets/logo.svg" alt="" class="preloader-logo">
+      <div class="preloader-bar"><div class="preloader-progress"></div></div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <nav class="main-nav">
+      <a href="/" class="logo">
+        <img src="assets/logo.svg" alt="FutureProof logo" class="logo-img">
+      </a>
+
+      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+      </button>
+
+      <ul class="nav-links">
+        <li><a href="/work.html" data-text="Work" class="active"><span>Work</span></a></li>
+        <li><a href="/services.html" data-text="Services"><span>Services</span></a></li>
+        <li><a href="/about.html" data-text="About"><span>About</span></a></li>
+        <li><a href="/contact.html" data-text="Contact"><span>Contact</span></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="page-transition">
+    <!-- Hero -->
+    <section class="work-hero">
+      <div class="work-hero-content">
+        <span class="work-badge">Selected Projects</span>
+        <h1>Work that <em>lasts</em></h1>
+        <p>A curated selection of branding, identity, and digital projects crafted with strategic thinking and timeless design principles.</p>
+      </div>
+    </section>
+
+    <!-- Filter Tabs -->
+    <div class="work-filters">
+      <div class="filter-container">
+        <button class="filter-btn active" data-filter="all">All Work</button>
+        <button class="filter-btn" data-filter="branding">Branding</button>
+        <button class="filter-btn" data-filter="identity">Visual Identity</button>
+        <button class="filter-btn" data-filter="website">Websites</button>
+        <button class="filter-btn" data-filter="marketing">Marketing</button>
+      </div>
+    </div>
+
+    <!-- Work Grid -->
+    <section class="work-section">
+      <div class="work-grid">
+        <!-- Featured Project -->
+        <article class="work-card featured" data-category="branding identity">
+          <div class="work-image">
+            <div class="work-image-placeholder">
+              <span>Project Image</span>
+            </div>
+          </div>
+          <div class="work-card-content">
+            <div class="work-tags">
+              <span class="work-tag">Branding</span>
+              <span class="work-tag">Visual Identity</span>
+            </div>
+            <h3>Coming soon</h3>
+            <p>We're currently working on exciting new projects. Check back soon to see our latest work.</p>
+            <a href="#" class="work-link">
+              View Project
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+              </svg>
+            </a>
+          </div>
+          <span class="work-number">01</span>
+        </article>
+        
+        <!-- Project 2 -->
+        <article class="work-card" data-category="website">
+          <div class="work-image">
+            <div class="work-image-placeholder">
+              <span>Project Image</span>
+            </div>
+          </div>
+          <div class="work-card-content">
+            <div class="work-tags">
+              <span class="work-tag">Website</span>
+            </div>
+            <h3>Coming soon</h3>
+            <p>We're currently working on exciting new projects. Check back soon to see our latest work.</p>
+            <a href="#" class="work-link">
+              View Project
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+              </svg>
+            </a>
+          </div>
+          <span class="work-number">02</span>
+        </article>
+        
+        <!-- Project 3 -->
+        <article class="work-card" data-category="identity marketing">
+          <div class="work-image">
+            <div class="work-image-placeholder">
+              <span>Project Image</span>
+            </div>
+          </div>
+          <div class="work-card-content">
+            <div class="work-tags">
+              <span class="work-tag">Visual Identity</span>
+              <span class="work-tag">Marketing</span>
+            </div>
+            <h3>Coming soon</h3>
+            <p>We're currently working on exciting new projects. Check back soon to see our latest work.</p>
+            <a href="#" class="work-link">
+              View Project
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+              </svg>
+            </a>
+          </div>
+          <span class="work-number">03</span>
+        </article>
+        
+        <!-- Project 4 -->
+        <article class="work-card" data-category="branding website">
+          <div class="work-image">
+            <div class="work-image-placeholder">
+              <span>Project Image</span>
+            </div>
+          </div>
+          <div class="work-card-content">
+            <div class="work-tags">
+              <span class="work-tag">Branding</span>
+              <span class="work-tag">Website</span>
+            </div>
+            <h3>Coming soon</h3>
+            <p>We're currently working on exciting new projects. Check back soon to see our latest work.</p>
+            <a href="#" class="work-link">
+              View Project
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+              </svg>
+            </a>
+          </div>
+          <span class="work-number">04</span>
+        </article>
+        
+        <!-- Project 5 -->
+        <article class="work-card" data-category="identity">
+          <div class="work-image">
+            <div class="work-image-placeholder">
+              <span>Project Image</span>
+            </div>
+          </div>
+          <div class="work-card-content">
+            <div class="work-tags">
+              <span class="work-tag">Visual Identity</span>
+            </div>
+            <h3>Coming soon</h3>
+            <p>We're currently working on exciting new projects. Check back soon to see our latest work.</p>
+            <a href="#" class="work-link">
+              View Project
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+              </svg>
+            </a>
+          </div>
+          <span class="work-number">05</span>
+        </article>
+        
+        <!-- Project 6 -->
+        <article class="work-card" data-category="marketing website">
+          <div class="work-image">
+            <div class="work-image-placeholder">
+              <span>Project Image</span>
+            </div>
+          </div>
+          <div class="work-card-content">
+            <div class="work-tags">
+              <span class="work-tag">Marketing</span>
+              <span class="work-tag">Website</span>
+            </div>
+            <h3>Coming soon</h3>
+            <p>We're currently working on exciting new projects. Check back soon to see our latest work.</p>
+            <a href="#" class="work-link">
+              View Project
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+              </svg>
+            </a>
+          </div>
+          <span class="work-number">06</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="work-cta">
+      <div class="work-cta-content">
+        <h2>Have a project in mind?</h2>
+        <p>We'd love to hear about your brand challenges and explore how we can help build something that lasts.</p>
+        <a href="/contact.html" class="btn-primary">Start a conversation</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <img src="assets/logo.svg" alt="FutureProof" class="footer-logo">
+        <p>Building brands that outlast the trends. Strategy, identity, and digital experiences.</p>
+      </div>
+      <div class="footer-nav">
+        <div class="footer-column">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/work.html">Work</a></li>
+            <li><a href="/services.html">Services</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="/privacy.html">Privacy Policy</a></li>
+            <li><a href="/terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="https://instagram.com/tryfutureproof" target="_blank">Instagram</a></li>
+            <li><a href="https://tiktok.com/@futureproofstudio" target="_blank">TikTok</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:post@svbruvik.no">post@svbruvik.no</a></li>
+            <li><span>Netherlands</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 FutureProof. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" aria-label="Scroll to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <!-- Cookie Consent Banner -->
+  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Cookie consent">
+    <div class="cookie-content">
+      <div class="cookie-text">
+        <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies. <a href="/privacy.html">Learn more</a></p>
+      </div>
+      <div class="cookie-buttons">
+        <button class="cookie-btn cookie-btn-decline" id="cookieDecline">Decline</button>
+        <button class="cookie-btn cookie-btn-accept" id="cookieAccept">Accept</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Cookie Consent
+    const cookieBanner = document.getElementById('cookieBanner');
+    const cookieAccept = document.getElementById('cookieAccept');
+    const cookieDecline = document.getElementById('cookieDecline');
+    
+    if (!localStorage.getItem('cookieConsent')) {
+      setTimeout(() => cookieBanner?.classList.add('visible'), 1500);
+    } else {
+      cookieBanner?.classList.add('hidden');
+    }
+    
+    cookieAccept?.addEventListener('click', () => {
+      localStorage.setItem('cookieConsent', 'accepted');
+      cookieBanner?.classList.remove('visible');
+      setTimeout(() => cookieBanner?.classList.add('hidden'), 400);
+    });
+    
+    cookieDecline?.addEventListener('click', () => {
+      localStorage.setItem('cookieConsent', 'declined');
+      cookieBanner?.classList.remove('visible');
+      setTimeout(() => cookieBanner?.classList.add('hidden'), 400);
+    });
+
+    // Scroll to top on page load
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+
+    // Preloader
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.querySelector('.preloader')?.classList.add('loaded');
+      }, 800);
+    });
+
+    // Header scroll effect
+    const nav = document.querySelector('.main-nav');
+    const scrollTopBtn = document.querySelector('.scroll-to-top');
+    
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      nav?.classList.toggle('scrolled', y > 50);
+      scrollTopBtn?.classList.toggle('visible', y > 500);
+    }, { passive: true });
+
+    scrollTopBtn?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Mobile Menu
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    const closeMenu = () => {
+      menuToggle?.classList.remove('active');
+      navLinks?.classList.remove('active');
+      menuToggle?.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    };
+    
+    menuToggle?.addEventListener('click', () => {
+      const isOpen = menuToggle.classList.toggle('active');
+      navLinks?.classList.toggle('active');
+      menuToggle.setAttribute('aria-expanded', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+    
+    navLinks?.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+
+    // Filter functionality
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const workCards = document.querySelectorAll('.work-card');
+    const workFilters = document.querySelector('.work-filters');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Always scroll to filter header first
+        const navHeight = nav?.offsetHeight || 50;
+        const filterTop = workFilters.offsetTop - navHeight;
+        window.scrollTo({ top: filterTop, behavior: 'smooth' });
+        
+        // Update active button
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        const filter = btn.dataset.filter;
+        
+        // Filter cards
+        workCards.forEach(card => {
+          const categories = card.dataset.category || '';
+          if (filter === 'all' || categories.includes(filter)) {
+            card.style.display = '';
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+              card.style.transition = 'opacity 0.4s, transform 0.4s';
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0)';
+            }, 50);
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
