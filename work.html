@@ -391,6 +391,37 @@
         font-size: 2rem;
       }
     }
+
+    /* Admin Link */
+    .footer-bottom {
+      position: relative;
+    }
+
+    .admin-link {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(244, 232, 216, 0.3);
+      transition: all 0.3s;
+      border-radius: 8px;
+    }
+
+    .admin-link:hover {
+      color: rgba(244, 232, 216, 0.6);
+      background: rgba(244, 232, 216, 0.05);
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+
+    .admin-link svg {
+      width: 16px;
+      height: 16px;
+    }
   </style>
 </head>
 <body>
@@ -648,6 +679,12 @@
     </div>
     <div class="footer-bottom">
       <p>© 2025 FutureProof. All rights reserved.</p>
+      <a href="/admin.html" class="admin-link" aria-label="Admin panel" title="Admin">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M12 1v6m0 6v6M5.64 5.64l4.24 4.24m4.24 4.24l4.24 4.24M1 12h6m6 0h6M5.64 18.36l4.24-4.24m4.24-4.24l4.24-4.24"/>
+        </svg>
+      </a>
     </div>
   </footer>
 
@@ -728,21 +765,85 @@
       menuToggle?.classList.remove('active');
       navLinks?.classList.remove('active');
       menuToggle?.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
+      document.body.classList.remove('menu-open');
     };
-    
+
     menuToggle?.addEventListener('click', () => {
       const isOpen = menuToggle.classList.toggle('active');
       navLinks?.classList.toggle('active');
       menuToggle.setAttribute('aria-expanded', isOpen);
-      document.body.style.overflow = isOpen ? 'hidden' : '';
+      document.body.classList.toggle('menu-open', isOpen);
     });
     
     navLinks?.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
 
+    // Load projects from localStorage
+    function loadProjects() {
+      const saved = localStorage.getItem('futureproof_projects');
+      if (!saved) return;
+
+      const projects = JSON.parse(saved);
+      const workGrid = document.querySelector('.work-grid');
+      if (!workGrid) return;
+
+      workGrid.innerHTML = '';
+
+      const categoryLabels = {
+        branding: 'Branding',
+        identity: 'Visual Identity',
+        website: 'Website',
+        marketing: 'Marketing'
+      };
+
+      projects.forEach((project, index) => {
+        const article = document.createElement('article');
+        article.className = `work-card${project.featured ? ' featured' : ''}`;
+        article.dataset.category = project.categories.join(' ');
+
+        const tags = project.categories.map(cat =>
+          `<span class="work-tag">${categoryLabels[cat] || cat}</span>`
+        ).join('');
+
+        article.innerHTML = `
+          <div class="work-image">
+            <div class="work-image-placeholder">
+              <span>Project Image</span>
+            </div>
+          </div>
+          <div class="work-card-content">
+            <div class="work-tags">
+              ${tags}
+            </div>
+            <h3>${project.name}</h3>
+            <p>${project.description}</p>
+            <a href="${project.link}" class="work-link">
+              View Project
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+              </svg>
+            </a>
+          </div>
+          <span class="work-number">${String(index + 1).padStart(2, '0')}</span>
+        `;
+
+        workGrid.appendChild(article);
+      });
+    }
+
+    // Load projects on page load
+    loadProjects();
+
+    // Listen for updates from admin panel
+    window.addEventListener('storage', (e) => {
+      if (e.key === 'futureproof_projects') {
+        loadProjects();
+      }
+    });
+
+    window.addEventListener('projectsUpdated', loadProjects);
+
     // Filter functionality
     const filterBtns = document.querySelectorAll('.filter-btn');
-    const workCards = document.querySelectorAll('.work-card');
     const workFilters = document.querySelector('.work-filters');
 
     filterBtns.forEach(btn => {
@@ -751,14 +852,15 @@
         const navHeight = nav?.offsetHeight || 50;
         const filterTop = workFilters.offsetTop - navHeight;
         window.scrollTo({ top: filterTop, behavior: 'smooth' });
-        
+
         // Update active button
         filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        
+
         const filter = btn.dataset.filter;
-        
-        // Filter cards
+
+        // Filter cards (re-query to get dynamically loaded cards)
+        const workCards = document.querySelectorAll('.work-card');
         workCards.forEach(card => {
           const categories = card.dataset.category || '';
           if (filter === 'all' || categories.includes(filter)) {

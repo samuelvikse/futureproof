@@ -616,14 +616,14 @@
       menuToggle?.classList.remove('active');
       navLinks?.classList.remove('active');
       menuToggle?.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
+      document.body.classList.remove('menu-open');
     };
-    
+
     menuToggle?.addEventListener('click', () => {
       const isOpen = menuToggle.classList.toggle('active');
       navLinks?.classList.toggle('active');
       menuToggle.setAttribute('aria-expanded', isOpen);
-      document.body.style.overflow = isOpen ? 'hidden' : '';
+      document.body.classList.toggle('menu-open', isOpen);
     });
     
     navLinks?.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));

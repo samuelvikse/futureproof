@@ -97,6 +97,12 @@ body {
   background: var(--color-secondary);
 }
 
+body.menu-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
 h1, h2, h3, h4 { font-weight: 600; }
 p, li, a { font-weight: 200; }
 
@@ -1037,6 +1043,9 @@ footer {
     opacity: 0;
     visibility: hidden;
     transition: all 0.4s ease;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 80px 20px 40px;
   }
   
   .nav-links.active { opacity: 1; visibility: visible; }

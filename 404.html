@@ -311,18 +311,21 @@
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
     
+    const closeMenu = () => {
+      menuToggle?.classList.remove('active');
+      navLinks?.classList.remove('active');
+      menuToggle?.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('menu-open');
+    };
+
     menuToggle?.addEventListener('click', () => {
       const isOpen = menuToggle.classList.toggle('active');
       navLinks?.classList.toggle('active');
       menuToggle.setAttribute('aria-expanded', isOpen);
-      document.body.style.overflow = isOpen ? 'hidden' : '';
+      document.body.classList.toggle('menu-open', isOpen);
     });
-    
-    navLinks?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
-      menuToggle?.classList.remove('active');
-      navLinks?.classList.remove('active');
-      document.body.style.overflow = '';
-    }));
+
+    navLinks?.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
   </script>
 </body>
 </html>
