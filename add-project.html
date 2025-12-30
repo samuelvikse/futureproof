@@ -3,77 +3,344 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Add Project - Styrke i hver maske</title>
+  <title>Add Project - FutureProof</title>
+
+  <!-- Adobe Fonts: Sofia Pro -->
+  <link rel="stylesheet" href="https://use.typekit.net/ngj4ynz.css">
+
   <style>
+    :root {
+      --color-dark: #3d4d42;
+      --color-primary: #f4e8d8;
+      --color-secondary: #53654e;
+      --color-accent: #8b9a7f;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      max-width: 600px;
-      margin: 50px auto;
-      padding: 20px;
-      background: #f5f5f5;
+      font-family: 'sofia-pro', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--color-dark);
+      color: var(--color-primary);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
     }
+
     .container {
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      max-width: 700px;
+      width: 100%;
+      background: rgba(83, 101, 78, 0.1);
+      border: 1px solid rgba(244, 232, 216, 0.1);
+      border-radius: 16px;
+      padding: 60px 50px;
+      backdrop-filter: blur(10px);
     }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      letter-spacing: -0.5px;
+    }
+
     h1 {
-      margin-top: 0;
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+      color: var(--color-primary);
+      line-height: 1.2;
     }
-    button {
-      background: #53654e;
-      color: white;
+
+    .subtitle {
+      font-size: 1rem;
+      color: rgba(244, 232, 216, 0.6);
+      margin-bottom: 40px;
+    }
+
+    .project-preview {
+      background: rgba(61, 77, 66, 0.4);
+      border: 1px solid rgba(244, 232, 216, 0.1);
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 32px;
+    }
+
+    .project-preview h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: var(--color-primary);
+    }
+
+    .detail-row {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(244, 232, 216, 0.08);
+    }
+
+    .detail-row:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .detail-label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--color-accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.75rem;
+    }
+
+    .detail-value {
+      font-size: 0.95rem;
+      color: rgba(244, 232, 216, 0.85);
+      line-height: 1.6;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      background: rgba(139, 154, 127, 0.2);
+      color: var(--color-primary);
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      border: 1px solid rgba(139, 154, 127, 0.3);
+    }
+
+    .action-section {
+      background: rgba(244, 232, 216, 0.03);
+      border: 1px solid rgba(244, 232, 216, 0.08);
+      border-radius: 12px;
+      padding: 28px 32px;
+      margin-bottom: 24px;
+    }
+
+    .action-section p {
+      color: rgba(244, 232, 216, 0.7);
+      margin-bottom: 24px;
+      line-height: 1.7;
+    }
+
+    .btn {
+      background: var(--color-secondary);
+      color: var(--color-primary);
       border: none;
-      padding: 12px 24px;
-      border-radius: 8px;
-      font-size: 16px;
+      padding: 16px 32px;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
       cursor: pointer;
-      margin-top: 20px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      font-family: 'sofia-pro', sans-serif;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
     }
-    button:hover {
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(244, 232, 216, 0.1);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+
+    .btn:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    .btn:hover {
       background: #3d4d42;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
     }
-    .success {
-      background: #d4edda;
-      color: #155724;
-      padding: 12px;
-      border-radius: 8px;
-      margin-top: 20px;
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .btn span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .success-message {
+      background: rgba(139, 154, 127, 0.2);
+      border: 1px solid rgba(139, 154, 127, 0.4);
+      color: var(--color-primary);
+      padding: 20px 24px;
+      border-radius: 12px;
       display: none;
+      align-items: center;
+      gap: 12px;
+      animation: slideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    .project-info {
-      background: #f8f9fa;
-      padding: 15px;
-      border-radius: 8px;
-      margin: 20px 0;
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
-    .project-info p {
-      margin: 8px 0;
+
+    .success-message.show {
+      display: flex;
     }
-    .project-info strong {
-      color: #53654e;
+
+    .success-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(139, 154, 127, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .success-message p {
+      margin: 0;
+    }
+
+    .success-message a {
+      color: var(--color-primary);
+      text-decoration: underline;
+      font-weight: 600;
+    }
+
+    .success-message a:hover {
+      color: var(--color-accent);
+    }
+
+    .back-link {
+      text-align: center;
+      margin-top: 24px;
+    }
+
+    .back-link a {
+      color: rgba(244, 232, 216, 0.5);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+    }
+
+    .back-link a:hover {
+      color: var(--color-primary);
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 40px 28px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .detail-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .project-preview {
+        padding: 24px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Add Project: Styrke i hver maske</h1>
-
-    <div class="project-info">
-      <p><strong>Project Name:</strong> Styrke i hver maske</p>
-      <p><strong>Description:</strong> Branding and website for Kristine Vikse's therapeutic knitting practice. The design philosophy centers on their belief that knitting is meditation in motion—a tool for nervous system regulation and mental healing. I created a minimalist Nordic aesthetic where clean layouts mirror mental clarity, generous whitespace reflects meditative breathing room, and warm earth tones evoke natural handcraft materials. Lifestyle photography emphasizes community over product, while simple navigation reduces cognitive load. Every design decision reinforces their core message: strength builds one stitch at a time, through presence, calm, and human connection.</p>
-      <p><strong>Categories:</strong> Branding, Visual Identity, Website</p>
-      <p><strong>Link:</strong> https://styrkeihvermaske.no/</p>
-      <p><strong>Featured:</strong> Yes</p>
+    <div class="logo">
+      <div class="logo-text">FutureProof</div>
     </div>
 
-    <p>Click the button below to add this project to your FutureProof portfolio. This will replace the placeholder "Coming soon" projects with your real work.</p>
+    <h1>Add Project</h1>
+    <p class="subtitle">Preview your project before adding it to your portfolio</p>
 
-    <button onclick="addProject()">Add Project to Portfolio</button>
+    <div class="project-preview">
+      <h2>Styrke i hver maske</h2>
 
-    <div class="success" id="successMessage">
-      ✓ Project added successfully! You can now view it on your <a href="/work.html">Work page</a> or manage it in the <a href="/admin.html">Admin Panel</a>.
+      <div class="detail-row">
+        <div class="detail-label">Categories</div>
+        <div class="detail-value">
+          <div class="tags">
+            <span class="tag">Branding</span>
+            <span class="tag">Visual Identity</span>
+            <span class="tag">Website</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-row">
+        <div class="detail-label">Description</div>
+        <div class="detail-value">
+          Branding and website for Kristine Vikse's therapeutic knitting practice. The design philosophy centers on their belief that knitting is meditation in motion—a tool for nervous system regulation and mental healing. I created a minimalist Nordic aesthetic where clean layouts mirror mental clarity, generous whitespace reflects meditative breathing room, and warm earth tones evoke natural handcraft materials.
+        </div>
+      </div>
+
+      <div class="detail-row">
+        <div class="detail-label">Project Link</div>
+        <div class="detail-value">
+          <a href="https://styrkeihvermaske.no/" target="_blank" rel="noopener noreferrer" style="color: var(--color-accent); text-decoration: none;">styrkeihvermaske.no →</a>
+        </div>
+      </div>
+
+      <div class="detail-row">
+        <div class="detail-label">Display</div>
+        <div class="detail-value">
+          Featured on Work page & Homepage
+        </div>
+      </div>
+    </div>
+
+    <div class="action-section">
+      <p>This will add the project to your portfolio and replace any placeholder "Coming soon" entries. You can manage it later through the Admin Panel.</p>
+      <button class="btn" onclick="addProject()">
+        <span>Add to Portfolio</span>
+      </button>
+    </div>
+
+    <div class="success-message" id="successMessage">
+      <div class="success-icon">✓</div>
+      <p>Project added successfully! View it on your <a href="/work.html">Work page</a> or manage it in the <a href="/admin.html">Admin Panel</a>.</p>
+    </div>
+
+    <div class="back-link">
+      <a href="/">← Back to homepage</a>
     </div>
   </div>
 
@@ -109,7 +376,7 @@
       localStorage.setItem('futureproof_projects', JSON.stringify(projects));
 
       // Show success message
-      document.getElementById('successMessage').style.display = 'block';
+      document.getElementById('successMessage').classList.add('show');
 
       // Trigger update event
       window.dispatchEvent(new Event('projectsUpdated'));
