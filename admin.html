@@ -544,6 +544,11 @@
         </div>
 
         <div class="form-group">
+          <label for="projectImage">Project Image URL (optional)</label>
+          <input type="text" id="projectImage" placeholder="/assets/images/projects/project-name.jpg">
+        </div>
+
+        <div class="form-group">
           <div class="checkbox-item">
             <input type="checkbox" id="projectFeatured">
             <label for="projectFeatured">Featured Project (spans 2 columns)</label>
@@ -743,6 +748,7 @@
       document.getElementById('projectName').value = project.name;
       document.getElementById('projectDescription').value = project.description;
       document.getElementById('projectLink').value = project.link || '';
+      document.getElementById('projectImage').value = project.image || '';
       document.getElementById('projectFeatured').checked = project.featured;
 
       // Set categories
@@ -793,6 +799,7 @@
         description: document.getElementById('projectDescription').value,
         categories: categories,
         link: document.getElementById('projectLink').value || '#',
+        image: document.getElementById('projectImage').value || '',
         featured: document.getElementById('projectFeatured').checked
       };
 
