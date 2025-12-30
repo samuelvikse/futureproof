@@ -551,7 +551,14 @@
         <div class="form-group">
           <div class="checkbox-item">
             <input type="checkbox" id="projectFeatured">
-            <label for="projectFeatured">Featured Project (spans 2 columns)</label>
+            <label for="projectFeatured">Featured Project (spans 2 columns on Work page)</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="checkbox-item">
+            <input type="checkbox" id="projectHomepage">
+            <label for="projectHomepage">Show on Homepage (max 3 projects recommended)</label>
           </div>
         </div>
 
@@ -750,6 +757,7 @@
       document.getElementById('projectLink').value = project.link || '';
       document.getElementById('projectImage').value = project.image || '';
       document.getElementById('projectFeatured').checked = project.featured;
+      document.getElementById('projectHomepage').checked = project.showOnHomepage || false;
 
       // Set categories
       document.getElementById('catBranding').checked = project.categories.includes('branding');
@@ -800,7 +808,8 @@
         categories: categories,
         link: document.getElementById('projectLink').value || '#',
         image: document.getElementById('projectImage').value || '',
-        featured: document.getElementById('projectFeatured').checked
+        featured: document.getElementById('projectFeatured').checked,
+        showOnHomepage: document.getElementById('projectHomepage').checked
       };
 
       if (editingProjectId) {

@@ -459,6 +459,12 @@
     </div>
     <div class="footer-bottom">
       <p>© 2025 FutureProof. All rights reserved.</p>
+      <a href="/admin.html" class="admin-link" aria-label="Admin panel" title="Admin">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M12 1v6m0 6v6M5.64 5.64l4.24 4.24m4.24 4.24l4.24 4.24M1 12h6m6 0h6M5.64 18.36l4.24-4.24m4.24-4.24l4.24-4.24"/>
+        </svg>
+      </a>
     </div>
   </footer>
 
@@ -631,6 +637,77 @@
     });
     
     navLinks?.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+
+    // Load featured projects from localStorage
+    function loadFeaturedProjects() {
+      const saved = localStorage.getItem('futureproof_projects');
+      if (!saved) return;
+
+      const projects = JSON.parse(saved);
+      const featuredProjects = projects.filter(p => p.showOnHomepage).slice(0, 3);
+
+      if (featuredProjects.length === 0) return;
+
+      const portfolioGrid = document.querySelector('.portfolio-grid');
+      if (!portfolioGrid) return;
+
+      portfolioGrid.innerHTML = '';
+
+      const categoryLabels = {
+        branding: 'Branding',
+        identity: 'Visual Identity',
+        website: 'Website',
+        marketing: 'Marketing'
+      };
+
+      featuredProjects.forEach((project, index) => {
+        const article = document.createElement('article');
+        article.className = `portfolio-card${index === 0 ? ' portfolio-card-large' : ''}`;
+
+        const categoryText = project.categories
+          .map(cat => categoryLabels[cat] || cat)
+          .join(' & ');
+
+        const imageHtml = project.image
+          ? `<img src="${project.image}" alt="${project.name}" loading="lazy">`
+          : `<div class="portfolio-image-placeholder"><span>Coming Soon</span></div>`;
+
+        article.innerHTML = `
+          <div class="portfolio-image">
+            ${imageHtml}
+          </div>
+          <div class="portfolio-card-content">
+            <span class="portfolio-category">${categoryText}</span>
+            <h3>${project.name}</h3>
+            <p>${project.description.length > 120 ? project.description.substring(0, 120) + '...' : project.description}</p>
+            <a href="${project.link}" class="portfolio-link" ${project.link.startsWith('http') ? 'target="_blank"' : ''}>
+              <span>View Project</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+              </svg>
+            </a>
+          </div>
+          <div class="portfolio-card-number">${String(index + 1).padStart(2, '0')}</div>
+        `;
+
+        portfolioGrid.appendChild(article);
+
+        // Re-observe for animations
+        observer.observe(article);
+      });
+    }
+
+    // Load projects on page load
+    loadFeaturedProjects();
+
+    // Listen for updates from admin panel
+    window.addEventListener('storage', (e) => {
+      if (e.key === 'futureproof_projects') {
+        loadFeaturedProjects();
+      }
+    });
+
+    window.addEventListener('projectsUpdated', loadFeaturedProjects);
 
     // Register Service Worker
     if ('serviceWorker' in navigator) {
