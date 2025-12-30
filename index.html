@@ -121,7 +121,7 @@
 
     <!-- Hero Section -->
     <section id="hero">
-      <img src="assets/images/office2.svg" alt="FutureProof office" class="hero-bg" aria-hidden="true">
+      <img src="assets/images/office2.jpg" alt="FutureProof office" class="hero-bg" aria-hidden="true" loading="eager">
       <div class="hero-content">
         <span class="hero-badge">Est. 2025 — Netherlands</span>
         <h1>Future-proof thinking.<br><em>Lasting brands.</em></h1>
@@ -443,9 +443,9 @@
         <div class="footer-column">
           <h4>Connect</h4>
           <ul>
-            <li><a href="https://instagram.com/tryfutureproof" target="_blank">Instagram</a></li>
-            <li><a href="https://www.linkedin.com/company/futureproofstudio" target="_blank">LinkedIn</a></li>
-            <li><a href="https://tiktok.com/@futureproofstudio" target="_blank">TikTok</a></li>
+            <li><a href="https://instagram.com/tryfutureproof" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+            <li><a href="https://www.linkedin.com/company/futureproofstudio" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://tiktok.com/@futureproofstudio" target="_blank" rel="noopener noreferrer">TikTok</a></li>
           </ul>
         </div>
         <div class="footer-column">
@@ -680,7 +680,7 @@
             <span class="portfolio-category">${categoryText}</span>
             <h3>${project.name}</h3>
             <p>${project.description.length > 120 ? project.description.substring(0, 120) + '...' : project.description}</p>
-            <a href="${project.link}" class="portfolio-link" ${project.link.startsWith('http') ? 'target="_blank"' : ''}>
+            <a href="${project.link}" class="portfolio-link" ${project.link.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''}>
               <span>View Project</span>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M7 17L17 7M17 7H7M17 7V17"/>
