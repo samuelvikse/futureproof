@@ -1024,6 +1024,12 @@ footer {
   color: rgba(244, 232, 216, 0.3);
 }
 
+.version {
+  opacity: 0.5;
+  font-size: 0.75rem;
+  margin-left: 8px;
+}
+
 .footer-legal { display: flex; gap: 24px; }
 
 .footer-legal a {
