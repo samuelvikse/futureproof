@@ -689,7 +689,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 FutureProof. All rights reserved. <span class="version">v1.01</span></p>
+      <p>© 2025 FutureProof. All rights reserved. <span class="version">v1.02</span></p>
       <a href="/admin.html" class="admin-link" aria-label="Admin panel" title="Admin">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="12" cy="12" r="3"/>
@@ -791,9 +791,25 @@
     // Load projects from localStorage
     function loadProjects() {
       const saved = localStorage.getItem('futureproof_projects');
-      if (!saved) return;
+      let projects;
 
-      const projects = JSON.parse(saved);
+      if (saved) {
+        projects = JSON.parse(saved);
+      } else {
+        // Default project if localStorage is empty
+        projects = [
+          {
+            id: 1,
+            name: 'Styrke i hver maske',
+            description: 'Branding and website for Kristine Vikse\'s therapeutic knitting practice. The design philosophy centers on their belief that knitting is meditation in motion—a tool for nervous system regulation and mental healing. I created a minimalist Nordic aesthetic where clean layouts mirror mental clarity, generous whitespace reflects meditative breathing room, and warm earth tones evoke natural handcraft materials. Lifestyle photography emphasizes community over product, while simple navigation reduces cognitive load. Every design decision reinforces their core message: strength builds one stitch at a time, through presence, calm, and human connection.',
+            categories: ['branding', 'identity', 'website'],
+            link: 'https://styrkeihvermaske.no/',
+            image: '/assets/images/projects/styrke-i-hver-maske.jpg',
+            featured: true,
+            showOnHomepage: true
+          }
+        ];
+      }
       const workGrid = document.querySelector('.work-grid');
       if (!workGrid) return;
 
