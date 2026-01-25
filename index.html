@@ -122,6 +122,12 @@
     <!-- Hero Section -->
     <section id="hero">
       <img src="/assets/images/office2.jpg" alt="FutureProof office" class="hero-bg" aria-hidden="true" loading="eager">
+      <!-- Floating decorative elements -->
+      <div class="hero-decorations" aria-hidden="true">
+        <div class="hero-float hero-float-1"></div>
+        <div class="hero-float hero-float-2"></div>
+        <div class="hero-float hero-float-3"></div>
+      </div>
       <div class="hero-content">
         <span class="hero-badge">Est. 2025 — Netherlands</span>
         <h1>Future-proof thinking.<br><em>Lasting brands.</em></h1>
@@ -336,15 +342,13 @@
       <div class="portfolio-grid">
         <article class="portfolio-card portfolio-card-large">
           <div class="portfolio-image">
-            <div class="portfolio-image-placeholder">
-              <span>Coming Soon</span>
-            </div>
+            <img src="/assets/images/projects/styrke-i-hver-maske.jpg" alt="Styrke i hver maske" loading="lazy">
           </div>
           <div class="portfolio-card-content">
-            <span class="portfolio-category">Branding & Web</span>
-            <h3>Brand Transformation Project</h3>
-            <p>Complete visual identity redesign and digital experience for a forward-thinking company.</p>
-            <a href="#" class="portfolio-link">
+            <span class="portfolio-category">Branding & Visual Identity & Website</span>
+            <h3>Styrke i hver maske</h3>
+            <p>Branding and website for Kristine Vikse's therapeutic knitting practice. The design philosophy centers on their belief that knitting is meditation in motion—a tool for nervous system regulation and mental healing.</p>
+            <a href="https://styrkeihvermaske.no/" class="portfolio-link" target="_blank" rel="noopener noreferrer">
               <span>View Project</span>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M7 17L17 7M17 7H7M17 7V17"/>
@@ -353,18 +357,16 @@
           </div>
           <div class="portfolio-card-number">01</div>
         </article>
-        
+
         <article class="portfolio-card">
           <div class="portfolio-image">
-            <div class="portfolio-image-placeholder">
-              <span>Coming Soon</span>
-            </div>
+            <img src="/assets/images/projects/johanaskvikse.jpg" alt="Johan Ask Vikse" loading="lazy">
           </div>
           <div class="portfolio-card-content">
-            <span class="portfolio-category">Visual Identity</span>
-            <h3>Identity System</h3>
-            <p>Crafting a cohesive brand language.</p>
-            <a href="#" class="portfolio-link">
+            <span class="portfolio-category">Website & Visual Identity</span>
+            <h3>Johan Ask Vikse</h3>
+            <p>Portfolio website for contemporary artist Johan Ask Vikse, showcasing his paintings and artistic journey.</p>
+            <a href="https://johanaskvikse.no/" class="portfolio-link" target="_blank" rel="noopener noreferrer">
               <span>View Project</span>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M7 17L17 7M17 7H7M17 7V17"/>
@@ -373,30 +375,10 @@
           </div>
           <div class="portfolio-card-number">02</div>
         </article>
-        
-        <article class="portfolio-card">
-          <div class="portfolio-image">
-            <div class="portfolio-image-placeholder">
-              <span>Coming Soon</span>
-            </div>
-          </div>
-          <div class="portfolio-card-content">
-            <span class="portfolio-category">Digital Experience</span>
-            <h3>Web Platform</h3>
-            <p>Building future-proof digital presence.</p>
-            <a href="#" class="portfolio-link">
-              <span>View Project</span>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M7 17L17 7M17 7H7M17 7V17"/>
-              </svg>
-            </a>
-          </div>
-          <div class="portfolio-card-number">03</div>
-        </article>
       </div>
       
       <div class="portfolio-cta">
-        <a href="#" class="portfolio-all-link">View All Projects</a>
+        <a href="/work" class="portfolio-all-link">View All Projects</a>
       </div>
     </section>
 
@@ -458,7 +440,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 FutureProof. All rights reserved. <span class="version">v1.10</span></p>
+      <p>© 2025 FutureProof. All rights reserved. <span class="version">v1.12</span></p>
       <a href="/admin" class="admin-link" aria-label="Admin panel" title="Admin">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="12" cy="12" r="3"/>
@@ -488,7 +470,10 @@
     </div>
   </div>
 
-  <script>
+  <script type="module">
+    // Firebase imports
+    import { getFeaturedProjects } from '/js/firebase-config.js';
+
     // Cookie Consent
     const cookieBanner = document.getElementById('cookieBanner');
     const cookieAccept = document.getElementById('cookieAccept');
@@ -528,38 +513,65 @@
       document.querySelector('.hero-content p')?.classList.add('animate-in');
     });
 
-    // Smooth scroll with offset for fixed header
+    // Smooth scroll with offset for fixed header (custom easing for smoother feel)
+    const smoothScrollTo = (targetY, duration = 800) => {
+      const startY = window.scrollY;
+      const diff = targetY - startY;
+      const startTime = performance.now();
+
+      // easeInOutCubic for smooth acceleration/deceleration
+      const easeInOutCubic = (t) => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+      const step = (currentTime) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easedProgress = easeInOutCubic(progress);
+
+        window.scrollTo(0, startY + diff * easedProgress);
+
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        }
+      };
+
+      requestAnimationFrame(step);
+    };
+
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', (e) => {
         const targetId = anchor.getAttribute('href');
         if (targetId === '#') return;
-        
+
         const target = document.querySelector(targetId);
         if (target) {
           e.preventDefault();
           const headerOffset = -60;
           const elementPosition = target.getBoundingClientRect().top;
           const offsetPosition = elementPosition + window.scrollY - headerOffset;
-          
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-          });
+
+          smoothScrollTo(offsetPosition, 800);
         }
       });
     });
 
-    // Header scroll effect & scroll-to-top button
+    // Header scroll effect & scroll-to-top button (optimized with rAF)
     const nav = document.querySelector('.main-nav');
     const scrollTopBtn = document.querySelector('.scroll-to-top');
-    
+    let ticking = false;
+
     window.addEventListener('scroll', () => {
-      const y = window.scrollY;
-      nav?.classList.toggle('scrolled', y > 50);
-      scrollTopBtn?.classList.toggle('visible', y > 500);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const y = window.scrollY;
+          nav?.classList.toggle('scrolled', y > 50);
+          scrollTopBtn?.classList.toggle('visible', y > 500);
+          ticking = false;
+        });
+        ticking = true;
+      }
     }, { passive: true });
 
-    scrollTopBtn?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    scrollTopBtn?.addEventListener('click', () => smoothScrollTo(0, 600));
 
     // Counter animation with easeOut effect (slows down early)
     const animateCounter = (el, target) => {
@@ -638,29 +650,46 @@
     
     navLinks?.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
 
-    // Load featured projects from localStorage
-    function loadFeaturedProjects() {
-      const saved = localStorage.getItem('futureproof_projects');
-      let projects;
+    // Load featured projects from Firestore
+    async function loadFeaturedProjects() {
+      let featuredProjects = [];
 
-      if (saved) {
-        projects = JSON.parse(saved);
-      } else {
-        // Default project if localStorage is empty
-        projects = [
+      try {
+        // Fetch from Firestore
+        featuredProjects = await getFeaturedProjects();
+      } catch (error) {
+        console.error('Error loading projects from Firestore:', error);
+      }
+
+      // Fallback to default projects if Firestore is empty or fails
+      if (featuredProjects.length === 0) {
+        featuredProjects = [
           {
-            id: 1,
+            id: '1',
             name: 'Styrke i hver maske',
             description: 'Branding and website for Kristine Vikse\'s therapeutic knitting practice. The design philosophy centers on their belief that knitting is meditation in motion—a tool for nervous system regulation and mental healing. I created a minimalist Nordic aesthetic where clean layouts mirror mental clarity, generous whitespace reflects meditative breathing room, and warm earth tones evoke natural handcraft materials.',
             categories: ['branding', 'identity', 'website'],
             link: 'https://styrkeihvermaske.no/',
             image: '/assets/images/projects/styrke-i-hver-maske.jpg',
             featured: true,
-            showOnHomepage: true
+            showOnHomepage: true,
+            order: 1
+          },
+          {
+            id: '2',
+            name: 'Johan Ask Vikse',
+            description: 'Portfolio website for contemporary artist Johan Ask Vikse, showcasing his paintings and artistic journey. The design emphasizes visual storytelling with a gallery-focused layout that lets the artwork speak for itself.',
+            categories: ['website', 'identity'],
+            link: 'https://johanaskvikse.no/',
+            image: '/assets/images/projects/johanaskvikse.jpg',
+            featured: true,
+            showOnHomepage: true,
+            order: 2
           }
         ];
       }
-      const featuredProjects = projects.filter(p => p.showOnHomepage).slice(0, 3);
+
+      featuredProjects = featuredProjects.slice(0, 3);
 
       if (featuredProjects.length === 0) return;
 
@@ -715,15 +744,6 @@
 
     // Load projects on page load
     loadFeaturedProjects();
-
-    // Listen for updates from admin panel
-    window.addEventListener('storage', (e) => {
-      if (e.key === 'futureproof_projects') {
-        loadFeaturedProjects();
-      }
-    });
-
-    window.addEventListener('projectsUpdated', loadFeaturedProjects);
 
     // Register Service Worker
     if ('serviceWorker' in navigator) {

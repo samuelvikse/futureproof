@@ -126,20 +126,32 @@
     }
     
     .contact-icon {
-      width: 44px;
-      height: 44px;
-      background: rgba(83, 101, 78, 0.1);
-      border-radius: 10px;
+      width: 48px;
+      height: 48px;
+      background: rgba(83, 101, 78, 0.08);
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    
+
+    .contact-item:hover .contact-icon {
+      background: var(--color-secondary);
+      transform: scale(1.05) rotate(-5deg);
+      box-shadow: 0 8px 20px rgba(83, 101, 78, 0.2);
+    }
+
     .contact-icon svg {
-      width: 20px;
-      height: 20px;
+      width: 22px;
+      height: 22px;
       stroke: var(--color-secondary);
+      transition: stroke 0.3s ease;
+    }
+
+    .contact-item:hover .contact-icon svg {
+      stroke: var(--color-primary);
     }
     
     .contact-item-content h3 {
@@ -171,75 +183,104 @@
     }
     
     .social-link {
-      width: 44px;
-      height: 44px;
-      background: rgba(83, 101, 78, 0.1);
-      border-radius: 10px;
+      width: 48px;
+      height: 48px;
+      background: rgba(83, 101, 78, 0.08);
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.3s;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
-    
+
     .social-link:hover {
       background: var(--color-secondary);
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(83, 101, 78, 0.25);
     }
-    
+
+    .social-link:active {
+      transform: translateY(-2px) scale(0.98);
+    }
+
     .social-link svg {
       width: 20px;
       height: 20px;
       fill: var(--color-secondary);
-      transition: fill 0.3s;
+      transition: all 0.3s ease;
     }
-    
+
     .social-link:hover svg {
       fill: var(--color-primary);
+      transform: scale(1.1);
     }
     
     /* Form Styles */
     .contact-form {
       background: #fff;
       padding: 50px;
-      border-radius: 20px;
-      box-shadow: 0 20px 60px rgba(83, 101, 78, 0.1);
+      border-radius: 24px;
+      box-shadow: 0 25px 80px rgba(83, 101, 78, 0.12);
+      position: relative;
+      overflow: hidden;
     }
-    
+
+    .contact-form::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--color-secondary), #8a9b7a);
+    }
+
     .form-group {
-      margin-bottom: 24px;
+      margin-bottom: 28px;
+      position: relative;
     }
-    
+
     .form-group label {
       display: block;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
       color: var(--color-secondary);
-      margin-bottom: 10px;
+      margin-bottom: 12px;
+      transition: all 0.3s ease;
     }
-    
+
     .form-group input,
     .form-group textarea,
     .form-group select {
       width: 100%;
-      padding: 16px 20px;
+      padding: 18px 22px;
       font-family: "sofia-pro", sans-serif;
       font-size: 1rem;
       font-weight: 400;
       color: var(--color-secondary);
-      background: rgba(83, 101, 78, 0.05);
-      border: 1px solid rgba(83, 101, 78, 0.15);
-      border-radius: 10px;
-      transition: all 0.3s;
+      background: rgba(83, 101, 78, 0.04);
+      border: 2px solid rgba(83, 101, 78, 0.1);
+      border-radius: 12px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       outline: none;
     }
-    
+
+    .form-group input:hover,
+    .form-group textarea:hover,
+    .form-group select:hover {
+      border-color: rgba(83, 101, 78, 0.25);
+      background: rgba(83, 101, 78, 0.02);
+    }
+
     .form-group input:focus,
     .form-group textarea:focus,
     .form-group select:focus {
       border-color: var(--color-secondary);
       background: #fff;
-      box-shadow: 0 0 0 4px rgba(83, 101, 78, 0.1);
+      box-shadow: 0 0 0 4px rgba(83, 101, 78, 0.08), 0 4px 20px rgba(83, 101, 78, 0.1);
+      transform: translateY(-2px);
     }
     
     /* Validation states */
@@ -290,22 +331,48 @@
     
     .form-submit {
       width: 100%;
-      padding: 18px 40px;
+      padding: 20px 40px;
       font-family: "sofia-pro", sans-serif;
       font-size: 1rem;
       font-weight: 600;
       color: var(--color-primary);
-      background: var(--color-secondary);
+      background: linear-gradient(135deg, var(--color-secondary), #3d4d42);
       border: none;
-      border-radius: 10px;
+      border-radius: 12px;
       cursor: pointer;
-      transition: all 0.3s;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
     }
-    
+
+    .form-submit::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.2) 50%, transparent 70%);
+      background-size: 200% 100%;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .form-submit:hover::before {
+      opacity: 1;
+      animation: shimmer 1.5s ease-in-out;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+
     .form-submit:hover {
-      background: var(--color-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(83, 101, 78, 0.2);
+      background: linear-gradient(135deg, #3d4d42, var(--color-secondary));
+      transform: translateY(-3px) scale(1.01);
+      box-shadow: 0 15px 40px rgba(83, 101, 78, 0.25);
+    }
+
+    .form-submit:active {
+      transform: translateY(-1px) scale(0.99);
     }
     
     /* Responsive */
@@ -535,7 +602,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 FutureProof. All rights reserved. <span class="version">v1.10</span></p>
+      <p>© 2025 FutureProof. All rights reserved. <span class="version">v1.12</span></p>
     </div>
   </footer>
 
@@ -596,17 +663,40 @@
       }, 800);
     });
 
-    // Header scroll effect
+    // Header scroll effect (optimized with rAF)
     const nav = document.querySelector('.main-nav');
     const scrollTopBtn = document.querySelector('.scroll-to-top');
-    
+    let ticking = false;
+
     window.addEventListener('scroll', () => {
-      const y = window.scrollY;
-      nav?.classList.toggle('scrolled', y > 50);
-      scrollTopBtn?.classList.toggle('visible', y > 500);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const y = window.scrollY;
+          nav?.classList.toggle('scrolled', y > 50);
+          scrollTopBtn?.classList.toggle('visible', y > 500);
+          ticking = false;
+        });
+        ticking = true;
+      }
     }, { passive: true });
 
-    scrollTopBtn?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    // Smooth scroll with custom easing
+    const smoothScrollTo = (targetY, duration = 600) => {
+      const startY = window.scrollY;
+      const diff = targetY - startY;
+      const startTime = performance.now();
+      const easeInOutCubic = (t) => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+      const step = (currentTime) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        window.scrollTo(0, startY + diff * easeInOutCubic(progress));
+        if (progress < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+
+    scrollTopBtn?.addEventListener('click', () => smoothScrollTo(0, 600));
 
     // Mobile Menu
     const menuToggle = document.querySelector('.menu-toggle');
@@ -631,7 +721,7 @@
     // Set form redirect URL dynamically
     const nextInput = document.querySelector('input[name="_next"]');
     if (nextInput) {
-      nextInput.value = window.location.origin + '/thank-you.html';
+      nextInput.value = window.location.origin + '/thank-you/';
     }
 
     // Form validation

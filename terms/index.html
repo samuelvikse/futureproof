@@ -344,7 +344,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 FutureProof. All rights reserved. <span class="version">v1.10</span></p>
+      <p>© 2025 FutureProof. All rights reserved. <span class="version">v1.12</span></p>
     </div>
   </footer>
 
@@ -405,17 +405,40 @@
       }, 800);
     });
 
-    // Header scroll effect
+    // Header scroll effect (optimized with rAF)
     const nav = document.querySelector('.main-nav');
     const scrollTopBtn = document.querySelector('.scroll-to-top');
-    
+    let ticking = false;
+
     window.addEventListener('scroll', () => {
-      const y = window.scrollY;
-      nav?.classList.toggle('scrolled', y > 50);
-      scrollTopBtn?.classList.toggle('visible', y > 500);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const y = window.scrollY;
+          nav?.classList.toggle('scrolled', y > 50);
+          scrollTopBtn?.classList.toggle('visible', y > 500);
+          ticking = false;
+        });
+        ticking = true;
+      }
     }, { passive: true });
 
-    scrollTopBtn?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    // Smooth scroll with custom easing
+    const smoothScrollTo = (targetY, duration = 600) => {
+      const startY = window.scrollY;
+      const diff = targetY - startY;
+      const startTime = performance.now();
+      const easeInOutCubic = (t) => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+      const step = (currentTime) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        window.scrollTo(0, startY + diff * easeInOutCubic(progress));
+        if (progress < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+
+    scrollTopBtn?.addEventListener('click', () => smoothScrollTo(0, 600));
 
     // Mobile Menu
     const menuToggle = document.querySelector('.menu-toggle');
