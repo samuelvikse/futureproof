@@ -104,6 +104,7 @@
     <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
       <span class="menu-line"></span>
       <span class="menu-line"></span>
+      <script src="http://localhost:3000/widget.js" data-company-id="jaSSi4qauYPIcCzDFNs6y8Alwlh1"></script>
     </button>
 
     <ul class="nav-links">
@@ -121,7 +122,10 @@
 
     <!-- Hero Section -->
     <section id="hero">
-      <img src="/assets/images/office2.jpg" alt="FutureProof office" class="hero-bg" aria-hidden="true" loading="eager">
+      <video id="hero-video" class="hero-bg" autoplay muted playsinline aria-hidden="true" style="opacity: 0.9;">
+        <source src="/assets/images/hero_office_video_Precise_Proteus.mp4" type="video/mp4">
+      </video>
+      <script>document.getElementById('hero-video').playbackRate = 0.4;</script>
       <!-- Floating decorative elements -->
       <div class="hero-decorations" aria-hidden="true">
         <div class="hero-float hero-float-1"></div>
