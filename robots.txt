@@ -1,11 +1,11 @@
 # Robots.txt for FutureProof
-# https://futureproof.studio
+# https://futureproofstudio.no
 
 User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://futureproof.studio/sitemap.xml
+Sitemap: https://futureproofstudio.no/sitemap.xml
 
 # Disallow admin or private areas (if any)
 Disallow: /admin/
