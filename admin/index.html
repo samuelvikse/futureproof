@@ -1824,30 +1824,72 @@
       }
     });
 
-    async function handleImageUpload(file) {
-      // Validate file size (5MB max)
-      if (file.size > 5 * 1024 * 1024) {
-        showToast('Image must be under 5MB', 'error');
-        return;
-      }
+    // Compress and resize image before upload
+    async function compressImage(file, maxWidth = 1920, quality = 0.85) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const img = new Image();
+          img.onload = () => {
+            const canvas = document.createElement('canvas');
+            let width = img.width;
+            let height = img.height;
 
+            // Calculate new dimensions
+            if (width > maxWidth) {
+              height = Math.round((height * maxWidth) / width);
+              width = maxWidth;
+            }
+
+            canvas.width = width;
+            canvas.height = height;
+
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, width, height);
+
+            canvas.toBlob((blob) => {
+              if (blob) {
+                // Create new file with same name
+                const compressedFile = new File([blob], file.name.replace(/\.[^.]+$/, '.jpg'), {
+                  type: 'image/jpeg',
+                  lastModified: Date.now()
+                });
+                resolve(compressedFile);
+              } else {
+                reject(new Error('Compression failed'));
+              }
+            }, 'image/jpeg', quality);
+          };
+          img.onerror = () => reject(new Error('Failed to load image'));
+          img.src = e.target.result;
+        };
+        reader.onerror = () => reject(new Error('Failed to read file'));
+        reader.readAsDataURL(file);
+      });
+    }
+
+    async function handleImageUpload(file) {
       // Show progress
       uploadContent.style.display = 'none';
       uploadProgress.style.display = 'flex';
-      progressFill.style.width = '30%';
+      progressFill.style.width = '10%';
 
       try {
-        // Show local preview immediately
+        // Compress image first
+        progressFill.style.width = '30%';
+        const compressedFile = await compressImage(file);
+        
+        // Show local preview
         const reader = new FileReader();
         reader.onload = (e) => {
           imagePreview.innerHTML = `<img src="${e.target.result}" alt="Preview">`;
         };
-        reader.readAsDataURL(file);
+        reader.readAsDataURL(compressedFile);
 
         progressFill.style.width = '60%';
 
-        // Upload to Firebase Storage
-        const downloadURL = await uploadProjectImage(file);
+        // Upload compressed image to Firebase Storage
+        const downloadURL = await uploadProjectImage(compressedFile);
         
         progressFill.style.width = '100%';
         
