@@ -2,6 +2,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
 import { getFirestore, collection, getDocs, addDoc, updateDoc, deleteDoc, doc, query, where, orderBy } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
 import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-storage.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBqUlaPVNNqp0L9V6stXHdhRBdbCPdIp_Y",
@@ -16,9 +17,28 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
+const storage = getStorage(app);
 
 // Projects Collection Reference
 const projectsRef = collection(db, 'projects');
+
+// Upload image to Firebase Storage
+async function uploadProjectImage(file) {
+  try {
+    const timestamp = Date.now();
+    const safeName = file.name.replace(/[^a-zA-Z0-9.-]/g, '_');
+    const fileName = `projects/${timestamp}_${safeName}`;
+    const storageRef = ref(storage, fileName);
+    
+    const snapshot = await uploadBytes(storageRef, file);
+    const downloadURL = await getDownloadURL(snapshot.ref);
+    
+    return downloadURL;
+  } catch (error) {
+    console.error('Error uploading image:', error);
+    throw error;
+  }
+}
 
 // Fetch all projects
 async function getProjects() {
@@ -109,11 +129,13 @@ function onAuthChange(callback) {
 export {
   db,
   auth,
+  storage,
   getProjects,
   getFeaturedProjects,
   addProject,
   updateProject,
   deleteProject,
+  uploadProjectImage,
   login,
   logout,
   onAuthChange

@@ -797,6 +797,91 @@
       opacity: 0.5;
     }
 
+    /* Image Upload Area */
+    .image-upload-area {
+      width: 100%;
+      border: 2px dashed rgba(244, 232, 216, 0.2);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      text-align: center;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      background: rgba(244, 232, 216, 0.02);
+    }
+
+    .image-upload-area:hover,
+    .image-upload-area.dragover {
+      border-color: var(--color-accent);
+      background: rgba(122, 154, 110, 0.1);
+    }
+
+    .upload-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(244, 232, 216, 0.5);
+    }
+
+    .upload-content svg {
+      width: 40px;
+      height: 40px;
+      opacity: 0.6;
+    }
+
+    .upload-content span {
+      font-size: 0.95rem;
+    }
+
+    .upload-content small {
+      font-size: 0.8rem;
+      opacity: 0.6;
+    }
+
+    .upload-progress {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--color-accent);
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 4px;
+      background: rgba(244, 232, 216, 0.1);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--color-accent);
+      width: 0%;
+      transition: width 0.3s ease;
+      animation: progress-pulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes progress-pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+
+    .image-url-fallback {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+      color: rgba(244, 232, 216, 0.5);
+    }
+
+    .image-url-fallback input {
+      flex: 1;
+      padding: 8px 12px;
+      font-size: 0.85rem;
+    }
+
     /* Checkbox Styling */
     .checkbox-group {
       display: grid;
@@ -1373,8 +1458,27 @@
           </div>
 
           <div class="form-group">
-            <label for="projectImage">Image Path</label>
-            <input type="text" id="projectImage" placeholder="/assets/images/projects/project.jpg">
+            <label>Project Image</label>
+            <div class="image-upload-area" id="imageUploadArea">
+              <input type="file" id="imageFileInput" accept="image/*" hidden>
+              <div class="upload-content" id="uploadContent">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="17 8 12 3 7 8"/>
+                  <line x1="12" y1="3" x2="12" y2="15"/>
+                </svg>
+                <span>Click or drag image here</span>
+                <small>PNG, JPG up to 5MB</small>
+              </div>
+              <div class="upload-progress" id="uploadProgress" style="display: none;">
+                <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+                <span>Uploading...</span>
+              </div>
+            </div>
+            <div class="image-url-fallback">
+              <span>or enter URL:</span>
+              <input type="text" id="projectImage" placeholder="https://...">
+            </div>
             <div class="image-preview-container">
               <div class="image-preview" id="imagePreview">
                 <div class="image-preview-placeholder">
@@ -1439,6 +1543,7 @@
       addProject,
       updateProject,
       deleteProject as firebaseDeleteProject,
+      uploadProjectImage,
       login,
       logout,
       onAuthChange
@@ -1466,6 +1571,11 @@
     const imagePreview = document.getElementById('imagePreview');
     const userAvatar = document.getElementById('userAvatar');
     const userEmail = document.getElementById('userEmail');
+    const imageUploadArea = document.getElementById('imageUploadArea');
+    const imageFileInput = document.getElementById('imageFileInput');
+    const uploadContent = document.getElementById('uploadContent');
+    const uploadProgress = document.getElementById('uploadProgress');
+    const progressFill = document.getElementById('progressFill');
 
     // Projects data
     let projects = [];
@@ -1685,6 +1795,81 @@
         `;
       }
     });
+
+    // Image file upload
+    imageUploadArea.addEventListener('click', () => imageFileInput.click());
+    
+    imageUploadArea.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      imageUploadArea.classList.add('dragover');
+    });
+
+    imageUploadArea.addEventListener('dragleave', () => {
+      imageUploadArea.classList.remove('dragover');
+    });
+
+    imageUploadArea.addEventListener('drop', (e) => {
+      e.preventDefault();
+      imageUploadArea.classList.remove('dragover');
+      const file = e.dataTransfer.files[0];
+      if (file && file.type.startsWith('image/')) {
+        handleImageUpload(file);
+      }
+    });
+
+    imageFileInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        handleImageUpload(file);
+      }
+    });
+
+    async function handleImageUpload(file) {
+      // Validate file size (5MB max)
+      if (file.size > 5 * 1024 * 1024) {
+        showToast('Image must be under 5MB', 'error');
+        return;
+      }
+
+      // Show progress
+      uploadContent.style.display = 'none';
+      uploadProgress.style.display = 'flex';
+      progressFill.style.width = '30%';
+
+      try {
+        // Show local preview immediately
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          imagePreview.innerHTML = `<img src="${e.target.result}" alt="Preview">`;
+        };
+        reader.readAsDataURL(file);
+
+        progressFill.style.width = '60%';
+
+        // Upload to Firebase Storage
+        const downloadURL = await uploadProjectImage(file);
+        
+        progressFill.style.width = '100%';
+        
+        // Set the URL in the input
+        imageInput.value = downloadURL;
+        
+        // Reset upload area after short delay
+        setTimeout(() => {
+          uploadContent.style.display = 'flex';
+          uploadProgress.style.display = 'none';
+          progressFill.style.width = '0%';
+        }, 500);
+
+        showToast('Image uploaded successfully', 'success');
+      } catch (error) {
+        console.error('Upload error:', error);
+        uploadContent.style.display = 'flex';
+        uploadProgress.style.display = 'none';
+        progressFill.style.width = '0%';
+        showToast('Failed to upload image', 'error');
+      }
+    }
 
     // Login
     loginForm.addEventListener('submit', async (e) => {
