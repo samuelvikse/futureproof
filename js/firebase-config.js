@@ -54,8 +54,10 @@ async function getProjects() {
 // Fetch featured projects (for homepage)
 async function getFeaturedProjects() {
   try {
-    const snapshot = await getDocs(query(projectsRef, where('showOnHomepage', '==', true), orderBy('order', 'asc')));
-    return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    // Fetch all projects and filter/sort client-side to avoid composite index requirement
+    const snapshot = await getDocs(query(projectsRef, orderBy('order', 'asc')));
+    const allProjects = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    return allProjects.filter(project => project.showOnHomepage === true);
   } catch (error) {
     console.error('Error fetching featured projects:', error);
     return [];
