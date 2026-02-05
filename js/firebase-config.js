@@ -8,7 +8,7 @@ const firebaseConfig = {
   apiKey: "AIzaSyBqUlaPVNNqp0L9V6stXHdhRBdbCPdIp_Y",
   authDomain: "futureproof-studio.firebaseapp.com",
   projectId: "futureproof-studio",
-  storageBucket: "futureproof-studio.firebasestorage.app",
+  storageBucket: "futureproof-studio.appspot.com",
   messagingSenderId: "42153080653",
   appId: "1:42153080653:web:c7052e668dd0372a28a904"
 };
