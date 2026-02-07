@@ -1,15 +1,15 @@
 // FutureProof Service Worker
-const CACHE_NAME = 'futureproof-v1';
+const CACHE_NAME = 'futureproof-v2';
 const OFFLINE_URL = '/404.html';
 
 // Assets to cache immediately
 const PRECACHE_ASSETS = [
   '/',
   '/index.html',
-  '/work.html',
-  '/services.html',
-  '/about.html',
-  '/contact.html',
+  '/work/',
+  '/services/',
+  '/about/',
+  '/contact/',
   '/404.html',
   '/css/style.css',
   '/assets/logo.svg',
